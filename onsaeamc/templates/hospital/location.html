@@ -47,7 +47,7 @@
             <span class="transport-text">버스: 영통역8번출구. 수원지방법원등기국 하차</span>
           </div>
           <div class="transport-item">
-            <span class="transport-text">주차: 건물 주차 가능</span>
+            <span class="transport-text">주차: 건물 주차 가능 (주차무료)</span>
           </div>
         </div>
       </div>
@@ -67,7 +67,7 @@
           <span class="hours-time">13:00 ~ 14:00</span>
         </div>
         <div class="hours-notice">
-          <p>* 19:00 접수 마감</p>
+          <p>* 19:30 접수 마감</p>
           <p>* 공휴일 휴무</p>
         </div>
       </div>
@@ -77,35 +77,5 @@
 {% endblock %}
 
 {% block extra_scripts %}
-
-<script type="text/javascript">
-  document.addEventListener('DOMContentLoaded', function() {
-    try {
-      console.log("지도 초기화 시작");
-      var mapOptions = {
-        center: new naver.maps.LatLng(37.270835, 127.013005),
-        zoom: 15,
-        zoomControl: true,
-        zoomControlOptions: {
-          position: naver.maps.Position.LEFT_CENTER
-        }
-      };
-      
-      var map = new naver.maps.Map('map', mapOptions);
-      
-      // 마커 위치 설정
-      var markerPosition = new naver.maps.LatLng(37.270835, 127.013005);
-      var marker = new naver.maps.Marker({
-        position: markerPosition,
-        map: map,
-        title: '온새동물의료센터'
-      });
-      
-      console.log("지도 초기화 완료");
-    } catch (error) {
-      console.error("지도 초기화 오류:", error);
-    }
-  });
-</script>
 
 {% endblock %}

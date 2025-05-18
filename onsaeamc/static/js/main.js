@@ -1,46 +1,33 @@
-function initMap() {
-    var map = new naver.maps.Map('map', {
-        center: new naver.maps.LatLng(37.2533329, 127.0723331), // 온새동물의료센터 좌표
-        zoom: 17,
-        minZoom: 10,
-        maxZoom: 19,
-        useStyleMap: true,
-        mapTypeControl: false, // 지도 유형 컨트롤 숨김
-        zoomControl: true,
-        zoomControlOptions: {
-            position: naver.maps.Position.TOP_RIGHT
-        }
-    });
-    
-    // 마커 생성
-    var marker = new naver.maps.Marker({
-        position: new naver.maps.LatLng(37.2533329, 127.0723331),
-        map: map
-    });
-    
-    // 정보창 내용
-    var contentString = [
-        '<div style="padding:10px;">',
-        '   <h4 style="margin:0;">온새동물의료센터</h4>',
-        '   <p style="margin:5px 0 0 0;">경기도 수원시 영통구 봉영로 1587<br>2층 201호 (다모아프라자)</p>',
-        '</div>'
-    ].join('');
-    
-    // 정보창 생성
-    var infowindow = new naver.maps.InfoWindow({
-        anchorSize: new naver.maps.Size(15, 5),
-        pixelOffset: new naver.maps.Point(0, -10)
-    });
-    
-    // 마커 클릭 이벤트
-    naver.maps.Event.addListener(marker, "click", function(e) {
-        if (infowindow.getMap()) {
-            infowindow.close();
-        } else {
-            infowindow.open(map, marker);
-        }
-    });
-    
-    // 초기에 정보창 열기
-    infowindow.open(map, marker);
-}
+// 네이버 맵 API 콜백 함수로 사용될 전역 함수
+window.initMap = function() {
+    console.log("네이버 맵 API 로드 완료");
+    // 지도 요소가 존재하는지 확인
+    if (document.getElementById('map')) {
+        // 지도 객체가 존재하는 경우에만 실행
+        // 현재 페이지 경로 확인
+        var currentPath = window.location.pathname;
+        var isLocationPage = currentPath.includes('/location/');
+        
+        // 지도 옵션 설정
+        var mapOptions = {
+            center: new naver.maps.LatLng(37.270835, 127.013005), // 온새동물의료센터 좌표
+            zoom: isLocationPage ? 17 : 15, // 위치 페이지면 더 확대
+            zoomControl: true,
+            zoomControlOptions: {
+                position: naver.maps.Position.TOP_RIGHT
+            }
+        };
+        
+        var map = new naver.maps.Map('map', mapOptions);
+        
+        // 마커 생성
+        var marker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(37.270835, 127.013005),
+            map: map
+        });
+        
+        // 정보창(말풍선) 코드는 완전히 제거됨
+    }
+};
+
+// 암튼 api도 좀 수정 ㅅㅂ
