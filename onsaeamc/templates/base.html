@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}온새동물의료센터{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=dw2jyey460"></script>
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+  <div class="wrap">
+    <div class="w-full header-wrap">
+      <header class="inner">
+        <div class="header-container">
+          <div class="logo">
+            <a href="{% url 'hospital:index' %}" rel="home">
+              <img src="{% static 'images/logo.png' %}" alt="온새동물의료센터">
+            </a>
+          </div>
+          <div class="menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </header>
+    </div>
+    
+    {% block content %}{% endblock %}
+    
+    <footer class="w-full">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="{% static 'images/exlog.png' %}" alt="온새동물의료센터">
+        </div>
+        
+        <div class="footer-info">
+          <p>대표자 : 이명수 오태진 | 대표번호 : 000 - 000 - 0000</p>
+          <p>사업자등록번호 : 149 05 03383</p>
+          <p>주소 : 경기도 수원시 영통구 봉영로 1587, 2층 201호(다모아프라자)</p>
+          <p>copyright © 뿌리동물병원. All right Reserved.</p>
+        </div>
+        
+        <div class="footer-links">
+          <ul class="link-row">
+            <li><a href="#">인스타그램</a></li>
+            <li><a href="#">블로그</a></li>
+            <li><a href="#">유튜브</a></li>
+          </ul>
+          <ul class="link-row">
+            <li><a href="#">개인정보처리방침</a></li>
+            <li><a href="#">표준이용약관</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="{% static 'js/main.js' %}"></script>
+  {% block extra_scripts %}{% endblock %}
+</body>
+</html>

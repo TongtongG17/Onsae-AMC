@@ -1,0 +1,216 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="hero-section">
+  <div class="hero-text">
+    <h1 class="intro-heading">"온전한 회복과 새로운 시작, <br>온새동물의료센터"</h1>
+    <a href="{% url 'hospital:intro' %}" class="intro-btn">병원 소개</a>
+  </div>
+  <div class="slider-controls"></div>
+</div>
+
+<div class="inner">
+  <main>
+    <section class="list-container">
+      <a href="{% url 'medical:checkup' %}" class="service-box">
+        <div class="service-image">
+          <img src="{% static 'images/건강검진.png' %}" alt="건강검진">
+        </div>
+        <span class="service-name">건강검진</span>
+      </a>
+      <a href="{% url 'medical:internal' %}" class="service-box">
+        <div class="service-image">
+          <img src="{% static 'images/일반내과.png' %}" alt="일반내과">
+        </div>
+        <span class="service-name">일반내과</span>
+      </a>
+      <a href="{% url 'medical:special' %}" class="service-box">
+        <div class="service-image">
+          <img src="{% static 'images/중증내과.png' %}" alt="중증내과">
+        </div>
+        <span class="service-name">중증내과</span>
+      </a>
+      <a href="{% url 'medical:surgery' %}" class="service-box">
+        <div class="service-image">
+          <img src="{% static 'images/외과.png' %}" alt="외과">
+        </div>
+        <span class="service-name">외과</span>
+      </a>
+      <a href="{% url 'medical:dental' %}" class="service-box">
+        <div class="service-image">
+          <img src="{% static 'images/치과.png' %}" alt="치과">
+        </div>
+        <span class="service-name">치과</span>
+      </a>
+    </section>
+
+    <section class="notice">
+      <div class="notice-header">
+        <h2>진료안내</h2>
+        <p>온새동물의료센터는 자세한 정보를 제공하며<br>
+          고객님들의 궁금증 및 불편함을 해소하고<br>
+          보다 나은 서비스를 제공해드리자 항상 최선을 다하겠습니다.</p>
+      </div>
+      
+      <div class="notice-content">
+        <div class="notice-box">
+          <div class="notice-box-header">
+            <h3>공지사항</h3>
+            <a href="{% url 'community:notice_list' %}" class="plus-link">+</a>
+          </div>
+          <ul class="notice-list">
+            {% if notices %}
+              {% for notice in notices %}
+                <li>
+                  <span class="title">{{ notice.title }}</span>
+                  <span class="date">{{ notice.created_at|date:"y.m.d" }}</span>
+                </li>
+              {% endfor %}
+            {% else %}
+              <li>
+                <span class="title">2025년 5월 진료일정</span>
+                <span class="date">25.04.25</span>
+              </li>
+              <li>
+                <span class="title">2025년 4월 진료일정</span>
+                <span class="date">25.03.20</span>
+              </li>
+              <li>
+                <span class="title">2025년 3월 진료일정</span>
+                <span class="date">25.02.19</span>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+        
+        <div class="notice-box">
+          <div class="notice-box-header">
+            <h3>이벤트</h3>
+            <a href="{% url 'community:event_list' %}" class="plus-link">+</a>
+          </div>
+          <ul class="notice-list">
+            {% if events %}
+              {% for event in events %}
+                <li>
+                  <span class="title">{{ event.title }}</span>
+                  <span class="date">{{ event.created_at|date:"y.m.d" }}</span>
+                </li>
+              {% endfor %}
+            {% else %}
+              <li>
+                <span class="title">5월 가정의 달 이벤트</span>
+                <span class="date">25.05.01</span>
+              </li>
+              <li>
+                <span class="title">4월 봄 이벤트</span>
+                <span class="date">25.04.03</span>
+              </li>
+              <li>
+                <span class="title">개원 n주년 이벤트</span>
+                <span class="date">25.02.19</span>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="guidebook">
+      <div class="guidebook-header">
+        <h2>반려동물 생활백서</h2>
+        <p>반려동물과 보호자의 건강하고 행복한 일상을 위해<br>
+          생활 속 유용한 정보와 팁을 안내드리며,<br>
+          보다 나은 반려문화를 만들어가고자 늘 함께하겠습니다.</p>
+      </div>
+      <div class="guidebook-wrapper">
+        {% if tips %}
+          <div class="guidebook-card">
+            <div class="card-image">
+              <img src="{{ tips.0.image.url }}" alt="{{ tips.0.title }}">
+            </div>
+            <div class="card-content">
+              <h3><span>[{{ tips.0.sub_title }}]</span> {{ tips.0.title }}</h3>
+            </div>
+          </div>
+        {% else %}
+          <div class="guidebook-card">
+            <div class="card-image">
+              <img src="{% static 'images/예시1.png' %}" alt="고양이 이미지">
+            </div>
+            <div class="card-content">
+              <h3><span>[집사님들 필독!]</span> 넥카라 싸우기 미션, 실패 없는 팁 전격 공개!</h3>
+            </div>
+          </div>
+        {% endif %}
+        <a href="{% url 'community:tips_list' %}" class="more-btn">MORE</a>
+      </div>
+    </section>
+
+    <section class="case">
+      <div class="case-header">
+        <h2>치료케이스</h2>
+        <p>온새동물의료센터는 실제 치료 사례를 바탕으로<br>
+          보다 현실적이고 유익한 정보를 제공드리고자 합니다.<br>
+          반려동물의 치료 과정을 공유함으로써,<br>
+          보호자님들께 도움이 되고 안심이 될 수 있도록 최선을 다하겠습니다.</p>
+      </div>
+      
+      <div class="case-tabs">
+        <button class="tab-btn active" data-category="all">전체</button>
+        <button class="tab-btn" data-category="internal">내과</button>
+        <button class="tab-btn" data-category="surgery">외과</button>
+        <button class="tab-btn" data-category="dental">치과</button>
+      </div>
+      
+      <div class="case-slider">
+        <div class="case-wrapper">
+          {% if cases %}
+            {% for case in cases %}
+              <div class="case-card">
+                <div class="card-image">
+                  <img src="{{ case.image.url }}" alt="{{ case.title }}">
+                </div>
+                <div class="card-info">
+                  <div class="case-tag">[{{ case.category.name }}]</div>
+                  <h3>{{ case.title }}</h3>
+                  <p>{{ case.description|truncatechars:100 }}</p>
+                </div>
+              </div>
+            {% endfor %}
+          {% else %}
+            <div class="case-card">
+              <div class="card-image">
+                <img src="{% static 'images/예시2.png' %}" alt="치료 케이스 이미지">
+              </div>
+              <div class="card-info">
+                <div class="case-tag">[내과]</div>
+                <h3>고양이 중성화 리뷰</h3>
+                <p>안녕하세요! 온새동물의료센터 입니다. 오늘은 약 6개월,체중 1.3kg 암컷 고양이 중성화 수술을 진행했습니다.</p>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<section class="directions">
+  <div class="directions-header">
+    <h2>오시는 길</h2>
+  </div>
+  <div class="map-container">
+    <div id="map"></div>
+  </div>
+  <div class="address-info">
+    <h3>온새동물의료센터 오시는 길</h3>
+    <p>경기도 수원시 영통구 봉영로 1587, 2층 201호 (다모아프라자)</p>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+</script>
+{% endblock %}

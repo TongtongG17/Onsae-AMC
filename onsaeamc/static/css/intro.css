@@ -1,0 +1,388 @@
+/* 배너 섹션 스타일 */
+.intro-banner {
+  width: 100%;
+  height: 400px;
+  background-image: url('../images/banner.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 어두운 오버레이 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-content {
+  text-align: center;
+  color: white;
+}
+
+.banner-content h2 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.banner-content h1 {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+/* 인사말 콘텐츠 스타일 */
+.intro-container {
+  width: 100%;
+  padding: 40px 0;
+}
+
+/* 제목 영역 (초록색 작대기 포함) */
+.title-area {
+  text-align: center;
+  margin: 30px 0;
+  position: relative;
+}
+
+.title-line {
+  width: 40px;
+  height: 3px;
+  background-color: #2F6022; /* 초록색 작대기 */
+  margin: 0 auto 20px;
+}
+
+.title-area h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+}
+
+/* 인사말 내용 스타일 */
+.intro-content {
+  padding: 0 20px;
+}
+
+.intro-image {
+  width: 100%;
+  max-width: 385px; /* inner의 max-width와 일치시킴 */
+  margin: 30px auto;
+  text-align: center;
+}
+
+.intro-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px; /* 이미지 모서리 둥글게 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 약간의 그림자 추가 */
+}
+
+.intro-content p {
+  margin-top: 30px;
+  line-height: 1.8;
+  color: #555;
+  font-size: 16px;
+  text-align: center;
+}
+/* 의료진 스타일 */
+.doctors-content {
+  padding: 0 20px;
+}
+
+.doctors-image {
+  width: 100%;
+  max-width: 385px; /* inner의 max-width와 일치시킴 */
+  margin: 30px auto;
+  text-align: center;
+}
+
+.doctors-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px; /* 이미지 모서리 둥글게 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 약간의 그림자 추가 */
+}
+
+
+
+.doc-wrap span {
+  position: relative;
+  padding-left: 15px;
+  margin-top: 30px;
+  line-height: 1.8;
+  color: #1d1d1d;
+  font-weight: 500;
+  font-size: 16px;
+  text-align: center;
+}
+.doc-wrap span::before {
+  content: "•"; /* 점(bullet point) 추가 */
+  position: absolute;
+  left: 0;
+  color: #2F6022; /* 점 색상 (초록색으로 설정) */
+}
+
+.doc-name {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+
+/* location.css */
+
+/* 지도 컨테이너 스타일 */
+.map-container {
+  width: 100%;
+  max-width: 385px;
+  margin: 30px auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 병원 정보 및 진료시간 컨테이너 */
+.hospital-info {
+  max-width: 385px;
+  margin: 30px auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid #ebebeb;
+}
+
+/* 병원 위치 정보 섹션 */
+.hospital-location {
+  padding: 20px;
+  border-bottom: 1px solid #ebebeb;
+  position: relative;
+}
+
+.logo-box {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.info-logo {
+  width: 60px;
+  height: auto;
+}
+
+.hospital-location h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.address {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* 교통 정보 스타일 */
+.transport-info {
+  margin-bottom: 20px;
+}
+
+.transport-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.transport-icon {
+  font-size: 18px;
+  margin-right: 10px;
+  width: 20px;
+  text-align: center;
+}
+
+.transport-text {
+  font-size: 14px;
+  color: #555;
+  flex: 1;
+}
+
+/* 버튼 그룹 스타일 */
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.naver-btn, .kakao-btn {
+  flex: 1;
+  padding: 12px 0;
+  text-align: center;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.naver-btn {
+  background-color: #03c75a;
+  color: white;
+}
+
+.kakao-btn {
+  background-color: #FEE500;
+  color: #3C1E1E;
+}
+
+.naver-btn:hover {
+  background-color: #02a64d;
+}
+
+.kakao-btn:hover {
+  background-color: #e6d000;
+}
+
+/* 진료시간 섹션 */
+.hospital-hours {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.hospital-hours h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.hours-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.hours-day {
+  font-size: 15px;
+  color: #555;
+  font-weight: 500;
+}
+
+.hours-time {
+  font-size: 15px;
+  color: #333;
+  font-weight: 600;
+}
+
+.hours-notice {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #ebebeb;
+}
+
+.hours-notice p {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 5px;
+}
+
+/* 태블릿 버전 (768px 이상) */
+@media (min-width: 768px) {
+  .intro-banner {
+    height: 300px;
+  }
+  
+  .banner-content h2 {
+    font-size: 22px;
+  }
+  
+  .banner-content h1 {
+    font-size: 36px;
+  }
+  
+  .intro-image {
+    max-width: 720px; /* 태블릿 버전의 inner max-width */
+  }
+  
+  .title-line {
+    width: 50px;
+  }
+  
+  .title-area h2 {
+    font-size: 28px;
+  }
+
+    .map-container,
+  .hospital-info {
+    max-width: 720px;
+  }
+  
+  .hospital-info {
+    display: flex;
+  }
+  
+  .hospital-location {
+    flex: 3;
+    border-bottom: 0;
+    border-right: 1px solid #ebebeb;
+  }
+  
+  .hospital-hours {
+    flex: 2;
+  }
+}
+
+/* PC 버전 (1024px 이상) */
+@media (min-width: 1024px) {
+  .intro-banner {
+    height: 350px;
+  }
+  
+  .banner-content h2 {
+    font-size: 24px;
+  }
+  
+  .banner-content h1 {
+    font-size: 42px;
+  }
+  
+  .intro-image {
+    max-width: 960px; /* PC 버전의 inner max-width */
+  }
+  
+  .title-line {
+    width: 60px;
+  }
+  
+  .title-area h2 {
+    font-size: 32px;
+  }
+
+    .map-container,
+  .hospital-info {
+    max-width: 960px;
+  }
+  
+  .hospital-location {
+    padding: 30px;
+  }
+  
+  .hospital-hours {
+    padding: 30px;
+  }
+  
+  .address {
+    font-size: 18px;
+  }
+  
+  .transport-text {
+    font-size: 16px;
+  }
+}
