@@ -5,7 +5,7 @@ from . import views
 app_name = 'medical'
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', views.checkup, name='index'),
     path('checkup/', views.checkup, name='checkup'),
     path('internal/', views.internal, name='internal'),
     path('special/', views.special, name='special'),

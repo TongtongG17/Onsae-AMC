@@ -1,0 +1,290 @@
+/* checkup.css */
+
+/* 공통 스타일 (모바일 기준: 425px 이하) */
+.checkup-container {
+  width: 100%;
+  padding: 40px 0;
+  background-color: #f9f9f9;
+}
+
+/* 종합건강검진 설명 섹션 */
+.checkup-info-section {
+  margin-bottom: 40px;
+  border-radius: 8px;
+  overflow: visible;
+  position: relative;
+}
+
+.checkup-info-content {
+  background-image: url('../images/test01.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  padding: 30px 20px;
+  position: relative;
+  height: 250px;
+}
+
+.checkup-info-box {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 0 auto;
+  position: relative;
+  top: -20px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.checkup-info-box ul {
+  list-style-type: disc;
+  padding-left: 15px;
+}
+
+.checkup-info-box li {
+  margin-bottom: 12px;
+  line-height: 1.5;
+  color: #333;
+  font-size: 14px;
+}
+
+/*건강검진 이미지 섹션 */
+.checkup-image-section {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.checkup-subtitle {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #eee;
+  position: relative;
+}
+
+.checkup-subtitle::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 60px;
+  height: 3px;
+  background-color: #2F6022;
+}
+
+.checkup-table-image {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.checkup-table-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 기존 안내사항 스타일 */
+/* .checkup-notes {
+  background-color: #f8f8f8;
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.checkup-notes p {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 8px;
+  line-height: 1.4;
+} */
+
+/* 새로 추가된 안내사항 스타일 */
+.checkup-additional-info {
+  margin-top: 25px;
+  border-top: 1px dashed #ddd;
+  padding-top: 20px;
+}
+
+.checkup-additional-info h4 {
+  font-size: 16px;
+  color: #2F6022;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.checkup-additional-info p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+/* 태블릿 버전 (768px 이상) */
+@media (min-width: 768px) {
+  .checkup-container {
+    padding: 60px 0;
+  }
+  
+  .inner {
+    max-width: 90%;
+    padding: 0 20px;
+  }
+  
+  .title-area {
+    margin-bottom: 40px;
+  }
+  
+  .title-line {
+    width: 40px;
+  }
+  
+  .title-area h2 {
+    font-size: 24px;
+  }
+  
+  .checkup-info-content {
+    height: 320px;
+    padding: 40px 30px;
+  }
+  
+  .checkup-info-box {
+    padding: 25px;
+    top: -25px;
+  }
+  
+  .checkup-info-box li {
+    font-size: 15px;
+    margin-bottom: 14px;
+  }
+  
+  .checkup-image-section {
+    padding: 25px;
+  }
+  
+  .checkup-subtitle {
+    font-size: 19px;
+  }
+  
+  .checkup-notes {
+    padding: 18px;
+  }
+  
+  .checkup-notes p {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .checkup-additional-info {
+    margin-top: 30px;
+    padding-top: 25px;
+  }
+  
+  .checkup-additional-info h4 {
+    font-size: 17px;
+    margin-bottom: 12px;
+  }
+  
+  .checkup-additional-info p {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+}
+
+/* PC 버전 (1024px 이상) */
+@media (min-width: 1024px) {
+  .checkup-container {
+    padding: 80px 0;
+  }
+  
+  .inner {
+    max-width: 1200px;
+  }
+  
+  .title-area {
+    margin-bottom: 50px;
+  }
+  
+  .title-line {
+    width: 50px;
+  }
+  
+  .title-area h2 {
+    font-size: 28px;
+  }
+  
+  .checkup-info-section {
+    margin-bottom: 70px;
+    border-radius: 10px;
+  }
+  
+  .checkup-info-content {
+    border-radius: 10px;
+    padding: 50px 30px;
+    height: 400px;
+  }
+  
+  .checkup-info-box {
+    max-width: 800px;
+    padding: 30px;
+    border-radius: 10px;
+    top: -30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .checkup-info-box ul {
+    padding-left: 20px;
+  }
+  
+  .checkup-info-box li {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  
+  .checkup-image-section {
+    border-radius: 10px;
+    padding: 30px;
+  }
+  
+  .checkup-subtitle {
+    font-size: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+  }
+  
+  .checkup-subtitle::before {
+    width: 80px;
+  }
+  
+  .checkup-table-image {
+    margin: 20px 0;
+  }
+  
+  .checkup-notes {
+    padding: 20px;
+    margin-top: 25px;
+  }
+  
+  .checkup-notes p {
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+  
+  .checkup-additional-info {
+    margin-top: 35px;
+    padding-top: 30px;
+  }
+  
+  .checkup-additional-info h4 {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+  
+  .checkup-additional-info p {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+}
