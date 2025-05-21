@@ -5,6 +5,7 @@
 
 {% block extra_head %}
 <link rel="stylesheet" href="{% static 'css/intro.css' %}">
+<link rel="stylesheet" href="{% static 'css/checkup.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -19,7 +20,7 @@
 </div>
 
 <!-- 콘텐츠 섹션 -->
-<div class="intro-container">
+<div class="checkup-container">
   <div class="inner">
     <!-- 인사말 제목 (초록색 작대기 포함) -->
     <div class="title-area">
@@ -27,12 +28,40 @@
       <h2>치과/안과</h2>
     </div>
     
-    <!-- 내용 -->
-    <div class="intro-content">
-      <div class="intro-image">
-        <img src="{% static 'images/치과.png' %}" alt="치과">
+    <!-- 내과 대표 이미지 -->
+    <div class="department-image">
+      <img src="{% static 'images/치과안과/치과.png' %}" alt="치과안과">
+    </div>
+    
+    <!-- 진료과목 네비게이션 버튼 -->
+    <div class="department-nav">
+      <a href="#" class="nav-button">치과</a>
+    </div>
+    
+    <!-- 진료과목 섹션: 내과 진료 목록 1 -->
+    <div class="department-section">
+      <h3 class="department-subtitle">치과</h3>
+      
+      <div class="department-desc">
+        <p>치주염, 치석, 치아 손상 등은 통증과 식욕 저하를 유발할 수 있으며 전신 건강에도 영향을 미칩니다. 정기적인 구강검진과 스케일링, 필요한 경우 발치를 포함한 전문 치과 처치가 필요합니다.</p>
       </div>
-
+    </div>
+    
+    <!-- 구분선 -->
+    <div class="section-divider"></div>
+    
+    <!-- 진료과목 네비게이션 버튼 -->
+    <div class="department-nav">
+      <a href="#" class="nav-button">안과</a>
+    </div>
+    
+    <!-- 진료과목 섹션: 내과 진료 목록 2 -->
+    <div class="department-section">
+      <h3 class="department-subtitle">안과</h3>
+      
+      <div class="department-desc">
+        <p>눈물, 충혈, 눈을 자주 비비는 행동은 각막궤양, 녹내장, 백내장 등 안과 질환의 초기 신호일 수 있습니다. 눈은 손상 시 기능 저하가 쉽게 회복되지 않기 때문에 조기 진단과 신속한 치료가 무엇보다 중요합니다. 정밀 장비를 활용해 정확한 진단과 적시에 치료가 이뤄지도록 합니다.</p>
+      </div>
     </div>
   </div>
 </div>

@@ -122,8 +122,116 @@
   line-height: 1.5;
 }
 
+/* 진료과 대표 이미지 */
+.department-image {
+  margin-bottom: 30px;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.department-image img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  object-fit: cover;
+}
+
+/* 진료과목 네비게이션 버튼 */
+.department-nav {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.nav-button {
+  display: inline-block;
+  padding: 10px 25px;
+  border: 1px solid #2F6022;
+  border-radius: 30px;
+  color: #2F6022;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.nav-button:hover, .nav-button.active {
+  background-color: #2F6022;
+  color: white;
+}
+
+/* 진료과목 섹션 */
+.department-section {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.department-subtitle {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.department-desc p {
+  color: #555;
+  line-height: 1.6;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* 섹션 구분선 */
+.section-divider {
+  height: 1px;
+  background-color: #ddd;
+  margin: 30px 0;
+  width: 100%;
+}
+
 /* 태블릿 버전 (768px 이상) */
 @media (min-width: 768px) {
+
+    .department-image {
+    margin-bottom: 40px;
+  }
+  
+  .department-image img {
+    width: 95%;
+  }
+  
+  .nav-button {
+    padding: 12px 30px;
+    font-size: 15px;
+  }
+  
+  .department-section {
+    padding: 25px;
+    max-width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .department-subtitle {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .department-desc p {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  
+  .section-divider {
+    max-width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+  }
   .checkup-container {
     padding: 60px 0;
   }
@@ -195,6 +303,41 @@
 
 /* PC 버전 (1024px 이상) */
 @media (min-width: 1024px) {
+    .department-image {
+    margin-bottom: 50px;
+  }
+  
+  .department-image img {
+    max-width: 1200px;
+    width: 100%;
+  }
+  
+  .nav-button {
+    padding: 12px 35px;
+    font-size: 16px;
+  }
+  
+  .department-section {
+    padding: 30px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .department-subtitle {
+    font-size: 22px;
+  }
+  
+  .department-desc p {
+    font-size: 16px;
+    line-height: 1.8;
+  }
+  
+  .section-divider {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
   .checkup-container {
     padding: 80px 0;
   }
