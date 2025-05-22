@@ -94,9 +94,22 @@
   padding: 0 20px;
 }
 
+/* 각 의료진 래퍼 */
+.doc-wrap {
+  margin-bottom: 60px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.doc-wrap:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+/* 의료진 이미지 */
 .doctors-image {
   width: 100%;
-  max-width: 385px; /* inner의 max-width와 일치시킴 */
+  max-width: 385px;
   margin: 30px auto;
   text-align: center;
 }
@@ -105,29 +118,11 @@
   width: 100%;
   height: auto;
   object-fit: cover;
-  border-radius: 8px; /* 이미지 모서리 둥글게 */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 약간의 그림자 추가 */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-
-
-.doc-wrap span {
-  position: relative;
-  padding-left: 15px;
-  margin-top: 30px;
-  line-height: 1.8;
-  color: #1d1d1d;
-  font-weight: 500;
-  font-size: 16px;
-  text-align: center;
-}
-.doc-wrap span::before {
-  content: "•"; /* 점(bullet point) 추가 */
-  position: absolute;
-  left: 0;
-  color: #2F6022; /* 점 색상 (초록색으로 설정) */
-}
-
+/* 의료진 이름 */
 .doc-name {
   display: flex;
   text-align: center;
@@ -135,6 +130,45 @@
   justify-content: center;
   margin-bottom: 30px;
 }
+
+.doc-name h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.doc-name h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background-color: #2F6022;
+}
+
+/* 경력 사항 */
+.doc-wrap span {
+  position: relative;
+  padding-left: 15px;
+  line-height: 1.8;
+  color: #1d1d1d;
+  font-weight: 500;
+  font-size: 16px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.doc-wrap span::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #2F6022;
+}
+
 
 
 /* location.css */
@@ -337,6 +371,21 @@
   .hospital-hours {
     flex: 2;
   }
+   .doctors-content {
+    padding: 0;
+  }
+  
+  .doctors-image {
+    max-width: 400px;
+  }
+  
+  .doc-name h2 {
+    font-size: 26px;
+  }
+  
+  .doc-wrap span {
+    font-size: 17px;
+  }
 }
 
 /* PC 버전 (1024px 이상) */
@@ -384,5 +433,92 @@
   
   .transport-text {
     font-size: 16px;
+  }
+  .doctors-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* PC에서 좌우 배치 */
+  .doc-wrap {
+    display: flex;
+    align-items: flex-start;
+    gap: 60px;
+    margin-bottom: 80px;
+    padding-bottom: 60px;
+  }
+  
+  /* 이미지 영역 - 좌측 */
+  .doctors-image {
+    flex: 0 0 400px; /* 고정 너비 */
+    width: 400px;
+    max-width: 400px;
+    margin: 0;
+    text-align: left;
+  }
+  
+  /* 텍스트 영역 - 우측 */
+  .doc-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .doc-name {
+    justify-content: flex-start;
+    text-align: left;
+    margin-bottom: 40px;
+  }
+  
+  .doc-name h2 {
+    font-size: 28px;
+    text-align: left;
+  }
+  
+  .doc-name h2::after {
+    left: 0;
+    transform: none;
+  }
+  
+  /* 경력 사항 좌측 정렬 */
+  .doc-wrap span {
+    text-align: left;
+    font-size: 18px;
+    margin-bottom: 12px;
+    padding-left: 20px;
+  }
+  
+  /* 짝수 번째 의료진은 이미지를 우측에 배치 */
+  .doc-wrap:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+  
+  .doc-wrap:nth-child(even) .doctors-image {
+    text-align: right;
+  }
+  
+  .doc-wrap:nth-child(even) .doc-name {
+    justify-content: flex-end;
+    text-align: right;
+  }
+  
+  .doc-wrap:nth-child(even) .doc-name h2 {
+    text-align: right;
+  }
+  
+  .doc-wrap:nth-child(even) .doc-name h2::after {
+    left: auto;
+    right: 0;
+  }
+  
+  .doc-wrap:nth-child(even) span {
+    text-align: right;
+    padding-left: 0;
+    padding-right: 20px;
+  }
+  
+  .doc-wrap:nth-child(even) span::before {
+    left: auto;
+    right: 0;
   }
 }
