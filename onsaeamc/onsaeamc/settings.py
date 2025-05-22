@@ -29,8 +29,10 @@ SECRET_KEY = "django-insecure-=vf=%=5pzzq372(bb=9_0c+&xi0)7q=!g#_c*d+w29spp=x)h1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True # 개발 중에는 True, 배포 시에는 False로 변경
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']  # 배포 시 실제 도메인 추가
+#ALLOWED_HOSTS = ['localhost', '127.0.0.1']  # 배포 시 실제 도메인 추가
 
+# ALLOWED_HOSTS = ['203.245.29.204', 'onsaeamc.co.kr', 'www.onsaeamc.co.kr', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']  
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 # Application definition
@@ -85,12 +87,22 @@ WSGI_APPLICATION = "onsaeamc.wsgi.application"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'onsae_hospital',
+        'USER': 'dbuser',
+        'PASSWORD': 'onsae0415!',
+        'HOST': '203.245.29.204',  # 서버 IP 주소
+        'PORT': '5432',
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -128,10 +140,11 @@ USE_TZ = True
 # STATIC_ROOT = BASE_DIR / 'staticfiles'
 # STATICFILES_DIRS = [BASE_DIR / 'static']
 
-STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
+STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 MEDIA_URL = '/media/'
