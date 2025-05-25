@@ -407,6 +407,67 @@
       // 속도
       speed: 800,
     });
+
+    // 카카오맵 초기화 함수
+  function initKakaoMap() {
+    // 지도 요소가 존재하는지 확인
+    if (document.getElementById('map')) {
+      var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+          mapOption = { 
+              center: new kakao.maps.LatLng(37.2533392, 127.0722967), // 온새동물의료센터 좌표
+              level: 3 // 지도의 확대 레벨 (1~14, 숫자가 작을수록 확대)
+          };
+      
+      // 지도 생성
+      var map = new kakao.maps.Map(mapContainer, mapOption);
+      
+      // 마커가 표시될 위치
+      var markerPosition = new kakao.maps.LatLng(37.2533392, 127.0722967);
+      
+      // 마커 생성
+      var marker = new kakao.maps.Marker({
+          position: markerPosition
+      });
+      
+      // 마커를 지도 위에 표시
+      marker.setMap(map);
+      
+      // 인포윈도우에 표시될 내용
+      var iwContent = '<div style="padding:5px;">온새동물의료센터</div>', 
+          iwRemoveable = true; // removeable 속성을 true로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+      
+      // 인포윈도우 생성
+      var infowindow = new kakao.maps.InfoWindow({
+          content : iwContent,
+          removable : iwRemoveable
+      });
+      
+      // 인포윈도우를 마커 위에 자동으로 표시
+      infowindow.open(map, marker);
+      
+      // 마커에 클릭이벤트를 등록 (선택사항 - 클릭시 다시 열기)
+      kakao.maps.event.addListener(marker, 'click', function() {
+            // 마커 위에 인포윈도우를 표시
+            infowindow.open(map, marker);  
+      });
+    }
+  }
+
+    // 카카오맵 API가 로드되었는지 확인하는 함수
+    function checkKakaoMapsLoaded() {
+      if (window.kakao && window.kakao.maps) {
+        // API가 로드됨, 지도 객체 초기화
+        kakao.maps.load(function() {
+          initKakaoMap();
+        });
+      } else {
+        // 아직 로드되지 않음, 100ms 후 다시 확인
+        setTimeout(checkKakaoMapsLoaded, 100);
+      }
+    }
+
+    // 카카오맵 초기화 실행
+    checkKakaoMapsLoaded();
   });
 </script>
 {% endblock %}
