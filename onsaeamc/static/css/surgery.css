@@ -1,0 +1,626 @@
+/* 외과 페이지 전용 스타일 */
+
+/* 외과 소개 텍스트 */
+.surgery-intro {
+  margin-bottom: 50px;
+  text-align: center;
+  padding: 30px 20px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 12px;
+  border-left: 5px solid #3b5d3b;
+}
+
+.surgery-intro p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #495057;
+  margin: 0;
+  word-break: keep-all;
+}
+
+.surgery-process {
+  margin-bottom: 60px;
+}
+
+/* 모바일용 세로 레이아웃 */
+.process-mobile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0; 
+}
+
+.process-desktop {
+  display: none;
+}
+
+.process-step {
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1; /* 카드가 화살표보다 뒤에 위치 */
+}
+
+.process-step img {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.process-step:hover img {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(59, 93, 59, 0.15);
+}
+
+.process-arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2; /* 화살표가 카드보다 앞에 위치 */
+  margin: -25px 0; /* 음수 마진으로 겹치게 */
+}
+
+.process-arrow img {
+  width: 55px;
+  height: auto;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+  /* 모바일에서 90도 회전하여 아래쪽을 가리키도록 */
+  transform: rotate(90deg);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.process-arrow:hover img {
+  opacity: 1;
+  transform: rotate(90deg) scale(1.1);
+}
+
+.desktop-arrow {
+  display: none;
+}
+
+/* 수술 특징 섹션 */
+.surgery-features {
+  margin-bottom: 60px;
+  padding: 40px 20px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+}
+
+.surgery-features h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.surgery-features h3::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: #3b5d3b;
+  border-radius: 2px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+
+.feature-item {
+  background-color: white;
+  padding: 25px 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border: 1px solid #e9ecef;
+}
+
+.feature-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(59, 93, 59, 0.1);
+  border-color: #3b5d3b;
+}
+
+.feature-icon {
+  margin-bottom: 20px;
+}
+
+.icon-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #3b5d3b 0%, #4a7c59 100%);
+  border-radius: 50%;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 auto;
+  box-shadow: 0 4px 15px rgba(59, 93, 59, 0.2);
+}
+
+.feature-item h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.feature-item p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #666;
+  margin: 0;
+}
+
+/* 주요 수술 종류 */
+.surgery-types {
+  margin-bottom: 60px;
+}
+
+.surgery-types h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.surgery-types h3::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: #3b5d3b;
+  border-radius: 2px;
+}
+
+.types-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 25px;
+}
+
+.type-category {
+  background-color: white;
+  padding: 25px 20px;
+  border-radius: 10px;
+  border-left: 4px solid #3b5d3b;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.type-category:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(59, 93, 59, 0.1);
+}
+
+.type-category h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #3b5d3b;
+  margin-bottom: 15px;
+}
+
+.type-category ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.type-category li {
+  font-size: 14px;
+  color: #666;
+  padding: 5px 0;
+  padding-left: 20px;
+  position: relative;
+}
+
+.type-category li::before {
+  content: '•';
+  color: #3b5d3b;
+  font-size: 16px;
+  position: absolute;
+  left: 0;
+  top: 5px;
+}
+
+/* 수술 전후 케어 안내 */
+.surgery-care {
+  margin-bottom: 40px;
+}
+
+.surgery-care h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.surgery-care h3::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: #3b5d3b;
+  border-radius: 2px;
+}
+
+.care-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.timeline-marker {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #3b5d3b 0%, #4a7c59 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(59, 93, 59, 0.2);
+}
+
+.timeline-content {
+  flex: 1;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid #3b5d3b;
+}
+
+.timeline-content h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.timeline-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.timeline-content li {
+  font-size: 14px;
+  color: #666;
+  padding: 3px 0;
+  padding-left: 18px;
+  position: relative;
+}
+
+.timeline-content li::before {
+  content: '✓';
+  color: #3b5d3b;
+  font-size: 12px;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  top: 3px;
+}
+
+/* 태블릿 스타일 (768px 이상) */
+@media (min-width: 768px) {
+  .surgery-intro {
+    padding: 40px 30px;
+    margin-bottom: 70px;
+  }
+
+  .surgery-intro p {
+    font-size: 18px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  /* 태블릿부터 가로 레이아웃 */
+  .process-mobile {
+    display: none;
+  }
+
+  .process-desktop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0; /* gap 제거 */
+    position: relative;
+  }
+
+  .process-step {
+    flex: 1;
+    max-width: 300px;
+    z-index: 1;
+  }
+
+  .process-step img {
+    max-width: none;
+    width: 100%;
+  }
+
+  .desktop-arrow {
+    display: flex;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+    margin: 0 -20px; /* 음수 마진으로 카드들과 겹치게 */
+  }
+
+  .desktop-arrow img {
+    width: 40px;
+    transform: rotate(0deg);
+    opacity: 0.9;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    transition: all 0.3s ease;
+  }
+
+  .desktop-arrow:hover img {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  .mobile-arrow {
+    display: none;
+  }
+
+  .surgery-features {
+    padding: 50px 30px;
+    margin-bottom: 80px;
+  }
+
+  .surgery-features h3 {
+    font-size: 28px;
+    margin-bottom: 50px;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+
+  .feature-item {
+    padding: 35px 25px;
+  }
+
+  .feature-item h4 {
+    font-size: 20px;
+  }
+
+  .feature-item p {
+    font-size: 15px;
+  }
+
+  .icon-circle {
+    width: 70px;
+    height: 70px;
+    font-size: 20px;
+  }
+
+  .surgery-types h3 {
+    font-size: 28px;
+    margin-bottom: 50px;
+  }
+
+  .types-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .type-category {
+    padding: 30px 25px;
+  }
+
+  .type-category h4 {
+    font-size: 20px;
+  }
+
+  .type-category li {
+    font-size: 15px;
+  }
+
+  .surgery-care h3 {
+    font-size: 28px;
+    margin-bottom: 50px;
+  }
+
+  .timeline-marker {
+    width: 100px;
+    height: 100px;
+    font-size: 14px;
+  }
+
+  .timeline-content {
+    padding: 25px;
+  }
+
+  .timeline-content h4 {
+    font-size: 18px;
+  }
+
+  .timeline-content li {
+    font-size: 15px;
+  }
+}
+
+/* PC 스타일 (1024px 이상) */
+@media (min-width: 1024px) {
+  .surgery-intro {
+    padding: 50px 40px;
+    margin-bottom: 80px;
+  }
+
+  .surgery-intro p {
+    font-size: 20px;
+  }
+
+  .process-desktop {
+    gap: 0;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .process-step {
+    max-width: 320px;
+  }
+
+  .desktop-arrow {
+    margin: 0 -25px; /* 더 많이 겹치게 */
+  }
+
+  .desktop-arrow img {
+    width: 50px;
+  }
+
+  .surgery-features {
+    padding: 60px 40px;
+    margin-bottom: 100px;
+  }
+
+  .surgery-features h3 {
+    font-size: 32px;
+    margin-bottom: 60px;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+  }
+
+  .feature-item {
+    padding: 40px 30px;
+  }
+
+  .feature-item h4 {
+    font-size: 18px;
+    margin-bottom: 18px;
+  }
+
+  .feature-item p {
+    font-size: 14px;
+  }
+
+  .surgery-types h3 {
+    font-size: 32px;
+    margin-bottom: 60px;
+  }
+
+  .types-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .surgery-care h3 {
+    font-size: 32px;
+    margin-bottom: 60px;
+  }
+
+  .care-timeline {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+}
+
+/* 대형 PC 스타일 (1440px 이상) */
+@media (min-width: 1440px) {
+  .surgery-intro {
+    padding: 60px 50px;
+  }
+
+  .surgery-intro p {
+    font-size: 22px;
+  }
+
+  .surgery-features {
+    padding: 80px 50px;
+  }
+
+  .features-grid {
+    gap: 40px;
+  }
+
+  .feature-item {
+    padding: 50px 35px;
+  }
+    .process-desktop {
+    max-width: 1200px;
+  }
+
+  .process-step {
+    max-width: 350px;
+  }
+
+  .desktop-arrow {
+    margin: 0 -30px;
+  }
+
+  .desktop-arrow img {
+    width: 55px;
+  }
+}
+
+/* 애니메이션 효과 */
+.process-step {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.process-step:nth-child(1) { animation-delay: 0.1s; }
+.process-step:nth-child(3) { animation-delay: 0.3s; }
+.process-step:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 호버 효과 개선 */
+.feature-item:hover .icon-circle {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(59, 93, 59, 0.3);
+}
+
+.type-category:hover {
+  border-left-width: 6px;
+}
+
+.timeline-item:hover .timeline-marker {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(59, 93, 59, 0.3);
+}
