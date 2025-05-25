@@ -15,7 +15,7 @@
   max-width: 300px;
   z-index: 1002;
   position: relative;
-  height: 35px;
+  height: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -306,7 +306,7 @@
 @media (max-width: 374px) {
   .header-container {
     max-width: 280px;
-    height: 32px;
+    height: 50px;
     padding-left: 6px;
     padding-right: 6px;
     margin: 6px auto;
@@ -345,7 +345,7 @@
 @media (min-width: 375px) and (max-width: 767px) {
   .header-container {
     max-width: 350px;
-    height: 38px;
+    height: 50px;
     padding-left: 10px;
     padding-right: 10px;
     margin: 10px auto;
@@ -385,7 +385,7 @@
   .header-container {
     width: 720px;
     max-width: none;
-    height: 45px;
+    height: 60px;
     padding-left: 15px;
     padding-right: 15px;
   }
@@ -412,7 +412,7 @@
   
   .header-container {
     width: 1200px;
-    height: 60px;
+    height: 75px;
     padding-left: 20px;
     padding-right: 20px;
   }

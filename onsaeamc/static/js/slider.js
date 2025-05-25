@@ -1,46 +1,4 @@
 // 치료케이스 슬라이더 클래스
-document.addEventListener('DOMContentLoaded', function() {
-    const heroSwiper = new Swiper('.hero-swiper', {
-      // 자동 재생
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-      },
-      
-      // 루프
-      loop: true,
-      
-      // 페이드 효과
-      effect: 'fade',
-      fadeEffect: {
-        crossFade: true
-      },
-      
-      // 네비게이션
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      
-      // 페이지네이션
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      
-      // 키보드 컨트롤
-      keyboard: {
-        enabled: true,
-      },
-      
-      // 터치 제스처
-      touchRatio: 1,
-      
-      // 속도
-      speed: 800,
-    });
-  });
-
 class CaseSlider {
   constructor() {
     this.slider = document.getElementById('caseSlider');
@@ -92,16 +50,12 @@ class CaseSlider {
       } else if (window.innerWidth >= 768) {
         this.slideWidth = 350;
       } else {
-        this.slideWidth = 230;
+        this.slideWidth = 256; // 240 + margin
       }
     }
     
-    // 가시 슬라이드 수 계산
-    if (window.innerWidth >= 768) {
-      this.visibleSlides = Math.min(3, this.filteredSlides.length);
-    } else {
-      this.visibleSlides = Math.min(2, this.filteredSlides.length);
-    }
+    // 가시 슬라이드 수 계산 - 모바일에서도 다중 표시
+    this.visibleSlides = Math.min(3, this.filteredSlides.length);
   }
   
   setupEventListeners() {
@@ -124,10 +78,16 @@ class CaseSlider {
       });
     });
     
-    // 키보드 네비게이션
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') this.prevSlide();
-      if (e.key === 'ArrowRight') this.nextSlide();
+    // 키보드 네비게이션 (케이스 슬라이더에서만 동작하도록 제한)
+    this.slider.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        this.prevSlide();
+      }
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        this.nextSlide();
+      }
     });
     
     // 터치/스와이프 지원
@@ -136,33 +96,55 @@ class CaseSlider {
   
   setupTouchEvents() {
     let startX = 0;
+    let startY = 0;
     let isDragging = false;
+    let isHorizontalSwipe = false;
     
+    // 터치 시작
     this.slider.addEventListener('touchstart', (e) => {
       startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
       isDragging = true;
-    });
+      isHorizontalSwipe = false;
+    }, { passive: true });
     
+    // 터치 이동
     this.slider.addEventListener('touchmove', (e) => {
       if (!isDragging) return;
-      e.preventDefault();
-    });
+      
+      const currentX = e.touches[0].clientX;
+      const currentY = e.touches[0].clientY;
+      const diffX = Math.abs(currentX - startX);
+      const diffY = Math.abs(currentY - startY);
+      
+      // 수평 스와이프인지 판단 (수평 움직임이 수직 움직임보다 클 때)
+      if (diffX > diffY && diffX > 10) {
+        isHorizontalSwipe = true;
+        e.preventDefault(); // 스크롤 방지
+      }
+    }, { passive: false });
     
+    // 터치 종료
     this.slider.addEventListener('touchend', (e) => {
-      if (!isDragging) return;
+      if (!isDragging || !isHorizontalSwipe) {
+        isDragging = false;
+        return;
+      }
+      
       isDragging = false;
       
       const endX = e.changedTouches[0].clientX;
       const diffX = startX - endX;
       
-      if (Math.abs(diffX) > 50) { // 최소 50px 이상 스와이프
+      // 최소 30px 이상 스와이프했을 때만 동작
+      if (Math.abs(diffX) > 30) {
         if (diffX > 0) {
           this.nextSlide();
         } else {
           this.prevSlide();
         }
       }
-    });
+    }, { passive: true });
   }
   
   filterByCategory(category) {

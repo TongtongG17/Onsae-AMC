@@ -1,0 +1,385 @@
+/* 병원 시설 갤러리 스타일 */
+.facilities-gallery {
+  margin-top: 40px;
+  padding: 0 20px;
+}
+
+.gallery-description {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.gallery-description p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #666;
+  margin: 0;
+}
+
+/* 메인 갤러리 Swiper */
+.mainGallerySwiper {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.mainGallerySwiper .swiper-slide {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.mainGallerySwiper .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 썸네일 갤러리 Swiper */
+.thumbGallerySwiper {
+  height: 80px;
+  box-sizing: border-box;
+  padding: 10px 0;
+  margin-bottom: 40px;
+}
+
+.thumbGallerySwiper .swiper-slide {
+  width: 20%;
+  height: 100%;
+  opacity: 0.4;
+  cursor: pointer;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.thumbGallerySwiper .swiper-slide-thumb-active {
+  opacity: 1;
+  border: 2px solid #3b5d3b;
+}
+
+.thumbGallerySwiper .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Swiper 네비게이션 커스터마이징 */
+.mainGallerySwiper .swiper-button-next,
+.mainGallerySwiper .swiper-button-prev {
+  background-color: rgba(59, 93, 59, 0.8);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-top: -20px;
+  transition: all 0.3s ease;
+}
+
+.mainGallerySwiper .swiper-button-next:after,
+.mainGallerySwiper .swiper-button-prev:after {
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+}
+
+.mainGallerySwiper .swiper-button-next:hover,
+.mainGallerySwiper .swiper-button-prev:hover {
+  background-color: rgba(59, 93, 59, 1);
+  transform: scale(1.1);
+}
+
+/* 장비 설명 영역 */
+.equipment-description {
+  margin: 40px 0;
+  padding: 30px 25px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 12px;
+  border-left: 5px solid #3b5d3b;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s ease;
+}
+
+.description-content {
+  max-width: 100%;
+}
+
+.equipment-description h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #3b5d3b;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e9ecef;
+  transition: color 0.3s ease;
+}
+
+.equipment-description p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #495057;
+  margin: 0;
+  text-align: justify;
+  word-break: keep-all;
+  transition: all 0.3s ease;
+}
+
+/* 애니메이션 효과 */
+.equipment-description.updating {
+  opacity: 0.7;
+  transform: translateY(-5px);
+}
+
+.equipment-description.updated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 시설 정보 섹션 */
+.facilities-info {
+  margin-top: 60px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+
+.info-item {
+  text-align: center;
+  padding: 30px 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #3b5d3b;
+}
+
+.info-item h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.info-item p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #666;
+  margin: 0;
+}
+
+/* 태블릿 스타일 (768px 이상) */
+@media (min-width: 768px) {
+  .facilities-gallery {
+    padding: 0;
+  }
+  
+  .gallery-description p {
+    font-size: 18px;
+  }
+  
+  .mainGallerySwiper {
+    height: 400px;
+    margin-bottom: 25px;
+  }
+  
+  .thumbGallerySwiper {
+    height: 100px;
+    margin-bottom: 50px;
+  }
+  
+  .thumbGallerySwiper .swiper-slide {
+    width: 15%;
+  }
+  
+  .mainGallerySwiper .swiper-button-next,
+  .mainGallerySwiper .swiper-button-prev {
+    width: 50px;
+    height: 50px;
+    margin-top: -25px;
+  }
+  
+  .mainGallerySwiper .swiper-button-next:after,
+  .mainGallerySwiper .swiper-button-prev:after {
+    font-size: 20px;
+  }
+  
+  .equipment-description {
+    margin: 50px 0;
+    padding: 40px 35px;
+  }
+  
+  .equipment-description h3 {
+    font-size: 22px;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+  }
+  
+  .equipment-description p {
+    font-size: 16px;
+    line-height: 1.9;
+  }
+  
+  .info-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+  
+  .info-item {
+    padding: 40px 30px;
+  }
+  
+  .info-item h3 {
+    font-size: 20px;
+  }
+  
+  .info-item p {
+    font-size: 16px;
+  }
+}
+
+/* PC 스타일 (1024px 이상) */
+@media (min-width: 1024px) {
+  .gallery-description p {
+    font-size: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .mainGallerySwiper {
+    height: 500px;
+    margin-bottom: 30px;
+  }
+  
+  .thumbGallerySwiper {
+    height: 120px;
+    margin-bottom: 60px;
+  }
+  
+  .thumbGallerySwiper .swiper-slide {
+    width: 12.5%;
+  }
+  
+  .mainGallerySwiper .swiper-button-next,
+  .mainGallerySwiper .swiper-button-prev {
+    width: 60px;
+    height: 60px;
+    margin-top: -30px;
+  }
+  
+  .mainGallerySwiper .swiper-button-next:after,
+  .mainGallerySwiper .swiper-button-prev:after {
+    font-size: 24px;
+  }
+  
+  .equipment-description {
+    margin: 60px 0;
+    padding: 50px 45px;
+  }
+  
+  .equipment-description h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+  }
+  
+  .equipment-description p {
+    font-size: 17px;
+    line-height: 2.0;
+  }
+  
+  .facilities-info {
+    margin-top: 80px;
+  }
+  
+  .info-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+  }
+  
+  .info-item {
+    padding: 50px 40px;
+  }
+  
+  .info-item h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+  
+  .info-item p {
+    font-size: 17px;
+  }
+}
+
+/* 대형 PC 스타일 (1440px 이상) */
+@media (min-width: 1440px) {
+  .mainGallerySwiper {
+    height: 600px;
+  }
+  
+  .thumbGallerySwiper {
+    height: 140px;
+  }
+  
+  .equipment-description {
+    margin: 70px 0;
+    padding: 60px 55px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .equipment-description h3 {
+    font-size: 26px;
+    margin-bottom: 25px;
+    padding-bottom: 18px;
+  }
+  
+  .equipment-description p {
+    font-size: 18px;
+    line-height: 2.1;
+  }
+  
+  .info-grid {
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .info-item {
+    padding: 60px 50px;
+  }
+  
+  .info-item h3 {
+    font-size: 24px;
+  }
+  
+  .info-item p {
+    font-size: 18px;
+  }
+}
+
+/* 로딩 상태 스타일 */
+.swiper-slide img {
+  transition: opacity 0.3s ease;
+}
+
+.swiper-slide img[src=""] {
+  opacity: 0;
+}
+
+/* 접근성 개선 */
+.swiper-button-next:focus,
+.swiper-button-prev:focus {
+  outline: 2px solid #3b5d3b;
+  outline-offset: 2px;
+}
+
+.thumbGallerySwiper .swiper-slide:focus {
+  outline: 2px solid #3b5d3b;
+  outline-offset: 2px;
+}

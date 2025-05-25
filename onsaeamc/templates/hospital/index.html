@@ -18,7 +18,7 @@
       <!-- 슬라이드 1: 병원 소개 -->
       <div class="swiper-slide">
         <div class="hero-text">
-          <h1 class="intro-heading">"온전한 회복과 새로운 시작, <br>온새동물의료센터"</h1>
+        <h1 class="intro-heading"><span>온</span>전한 회복과<br><br><span>새</span>로운 시작 <br><br><span>온새</span>동물의료센터</h1>
           <a href="{% url 'hospital:intro' %}" class="intro-btn">병원 소개</a>
         </div>
       </div>
@@ -26,7 +26,7 @@
       <!-- 슬라이드 2: 의료진 소개 -->
       <div class="swiper-slide">
         <div class="hero-text">
-          <h1 class="intro-heading">정확한 진단과 치료는 의료진의 역할이지만, <br>회복은 보호자와 함께 만들어가는 과정입니다. <br>온새동물의료센터가 늘 곁에 있겠습니다.</h1>
+          <h1 class="intro-heading">뭔가새로운문구1</h1>
           <a href="{% url 'hospital:doctor_list' %}" class="intro-btn">의료진 소개</a>
         </div>
       </div>
@@ -34,8 +34,8 @@
       <!-- 슬라이드 3: 지속가능한 치료 -->
       <div class="swiper-slide">
         <div class="hero-text">
-          <h1 class="intro-heading">진정한 회복과 치료는 지속 가능해야 합니다. <br>온새동물의료센터가 보호자의 현실과 마음까지 함께 살피며 <br>그 여정을 함께 하겠습니다.</h1>
-          <a href="{% url 'medical:checkup' %}" class="intro-btn">진료 안내</a>
+          <h1 class="intro-heading">뭔가새로운문구2</h1>
+          <a href="{% url 'hospital:location' %}" class="intro-btn">오시는길</a>
         </div>
       </div>
 
@@ -90,9 +90,6 @@
     <section class="notice" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
       <div class="notice-header">
         <h2>진료안내</h2>
-        <p>온새동물의료센터는 자세한 정보를 제공하며<br>
-          고객님들의 궁금증 및 불편함을 해소하고<br>
-          보다 나은 서비스를 제공해드리자 항상 최선을 다하겠습니다.</p>
       </div>
       
       <div class="notice-content">
@@ -162,9 +159,6 @@
     <section class="guidebook" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
       <div class="guidebook-header">
         <h2>반려동물 생활백서</h2>
-        <p>반려동물과 보호자의 건강하고 행복한 일상을 위해<br>
-          생활 속 유용한 정보와 팁을 안내드리며,<br>
-          보다 나은 반려문화를 만들어가고자 늘 함께하겠습니다.</p>
       </div>
       <div class="guidebook-wrapper">
         {% if tips %}
@@ -194,10 +188,6 @@
     <section class="case" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
       <div class="case-header">
         <h2>치료케이스</h2>
-        <p>온새동물의료센터는 실제 치료 사례를 바탕으로<br>
-          보다 현실적이고 유익한 정보를 제공드리고자 합니다.<br>
-          반려동물의 치료 과정을 공유함으로써,<br>
-          보호자님들께 도움이 되고 안심이 될 수 있도록 최선을 다하겠습니다.</p>
       </div>
       
       <!-- 카테고리 탭 -->
