@@ -519,115 +519,6 @@ header {
 }
 
 
-/* 치료케이스 섹션 스타일 */
-.case {
-  padding: 40px 20px;
-  text-align: center;
-}
-
-.case-header {
-  margin-bottom: 40px;
-}
-
-.case-header h2 {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 15px;
-  color: #333;
-}
-
-.case-header p {
-  font-size: 16px;
-  line-height: 1.6;
-  color: #666;
-}
-
-/* 탭 버튼 스타일 */
-.case-tabs {
-  display: flex;
-  justify-content: center;
-  gap: 5px;
-  margin-bottom: 30px;
-}
-
-.tab-btn {
-  padding: 8px 25px;
-  border: 1px solid #ddd;
-  background-color: #fff;
-  color: #666;
-  font-size: 16px;
-  font-weight: 500;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.tab-btn.active {
-  background-color: #3b5d3b;
-  color: #fff;
-  border-color: #3b5d3b;
-}
-
-.tab-btn:hover:not(.active) {
-  background-color: #f0f0f0;
-}
-
-/* 슬라이더 컨테이너 */
-.case-slider {
-  position: relative;
-  max-width: 385px;
-  margin: 0 auto 20px;
-  overflow: hidden;
-}
-
-.case-wrapper {
-  display: flex;
-  transition: transform 0.3s ease;
-}
-
-/* 케이스 카드 스타일 */
-.case-card {
-  width: 100%;
-  flex-shrink: 0;
-  background-color: #fff;
-  border: 1px solid #333;
-  text-align: left;
-}
-
-.case-card .card-image {
-  width: 100%;
-  height: auto;
-}
-
-.case-card .card-image img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.card-info {
-  padding: 20px;
-}
-
-.case-tag {
-  color: #2F6022;
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-
-.card-info h3 {
-  font-size: 18px;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.card-info p {
-  font-size: 15px;
-  line-height: 1.6;
-  color: #666;
-  margin: 0;
-}
 
 
 /* 오시는 길 섹션 스타일 */
@@ -1117,116 +1008,6 @@ footer {
 }
 
 
-/* 치료케이스 섹션 스타일 */
-.case {
-  padding: 40px 20px;
-  text-align: center;
-}
-
-.case-header {
-  margin-bottom: 40px;
-}
-
-.case-header h2 {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 15px;
-  color: #333;
-}
-
-.case-header p {
-  font-size: 16px;
-  line-height: 1.6;
-  color: #666;
-}
-
-/* 탭 버튼 스타일 */
-.case-tabs {
-  display: flex;
-  justify-content: center;
-  gap: 5px;
-  margin-bottom: 30px;
-}
-
-.tab-btn {
-  padding: 8px 25px;
-  border: 1px solid #ddd;
-  background-color: #fff;
-  color: #666;
-  font-size: 16px;
-  font-weight: 500;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.tab-btn.active {
-  background-color: #3b5d3b;
-  color: #fff;
-  border-color: #3b5d3b;
-}
-
-.tab-btn:hover:not(.active) {
-  background-color: #f0f0f0;
-}
-
-/* 슬라이더 컨테이너 */
-.case-slider {
-  position: relative;
-  max-width: 385px;
-  margin: 0 auto 20px;
-  overflow: hidden;
-}
-
-.case-wrapper {
-  display: flex;
-  transition: transform 0.3s ease;
-}
-
-/* 케이스 카드 스타일 */
-.case-card {
-  width: 100%;
-  flex-shrink: 0;
-  background-color: #fff;
-  border: 1px solid #333;
-  text-align: left;
-}
-
-.case-card .card-image {
-  width: 100%;
-  height: auto;
-}
-
-.case-card .card-image img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.card-info {
-  padding: 20px;
-}
-
-.case-tag {
-  color: #2F6022;
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-
-.card-info h3 {
-  font-size: 18px;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.card-info p {
-  font-size: 15px;
-  line-height: 1.6;
-  color: #666;
-  margin: 0;
-}
-
 
 /* 오시는 길 섹션 스타일 */
 .directions {
@@ -1556,41 +1337,6 @@ footer {
     padding: 12px 40px;
     font-size: 18px;
   }
-  
-  /* 치료케이스 섹션 */
-  .case {
-    padding: 60px 20px;
-  }
-  
-  .case-header h2 {
-    font-size: 28px;
-  }
-  
-  .case-header p {
-    font-size: 18px;
-  }
-  
-  .tab-btn {
-    padding: 10px 30px;
-    font-size: 18px;
-  }
-  
-  .case-slider {
-    max-width: 720px;
-  }
-  
-  .card-info {
-    padding: 25px;
-  }
-  
-  .card-info h3 {
-    font-size: 20px;
-  }
-  
-  .card-info p {
-    font-size: 16px;
-  }
-  
   /* 오시는 길 섹션 */
     .directions {
     padding: 60px 20px;
@@ -1841,52 +1587,6 @@ footer {
     font-size: 20px;
   }
   
-  /* 치료케이스 섹션 */
-  .case {
-    padding: 80px 20px;
-  }
-  
-  .case-header h2 {
-    font-size: 36px;
-  }
-  
-  .case-header p {
-    font-size: 20px;
-    max-width: 700px;
-    margin: 0 auto;
-  }
-  
-  .case-tabs {
-    gap: 10px;
-    margin-bottom: 50px;
-  }
-  
-  .tab-btn {
-    padding: 12px 35px;
-    font-size: 20px;
-  }
-  
-  .case-slider {
-    max-width: 1200px;
-  }
-  
-  .card-info {
-    padding: 30px;
-  }
-  
-  .case-tag {
-    font-size: 16px;
-  }
-  
-  .card-info h3 {
-    font-size: 22px;
-    margin-bottom: 15px;
-  }
-  
-  .card-info p {
-    font-size: 17px;
-  }
-  
   /* 오시는 길 섹션 */
    .directions {
     padding: 80px 20px;
@@ -1997,11 +1697,6 @@ footer {
   .guidebook-wrapper {
     max-width: 1400px;
   }
-  
-  .case-slider {
-    max-width: 1400px;
-  }
-  
   .map-container {
     max-width: 1400px;
   }

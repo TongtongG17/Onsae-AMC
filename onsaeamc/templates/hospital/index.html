@@ -1,9 +1,13 @@
+
 {% extends 'base.html' %}
 {% load static %}
 
 {% block extra_head %}
+<!-- AOS CSS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <!-- Swiper CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<link rel="stylesheet" href="{% static 'css/slider.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -28,20 +32,13 @@
       </div>
       
       <!-- 슬라이드 3: 지속가능한 치료 -->
-      {% comment %} <div class="swiper-slide">
+      <div class="swiper-slide">
         <div class="hero-text">
           <h1 class="intro-heading">진정한 회복과 치료는 지속 가능해야 합니다. <br>온새동물의료센터가 보호자의 현실과 마음까지 함께 살피며 <br>그 여정을 함께 하겠습니다.</h1>
           <a href="{% url 'medical:checkup' %}" class="intro-btn">진료 안내</a>
         </div>
       </div>
-      
-      <!-- 슬라이드 4: 함께하는 치료 -->
-      <div class="swiper-slide">
-        <div class="hero-text">
-          <h1 class="intro-heading">진정한 회복은 보호자와 함께 만들어가야합니다. <br>지속가능한 치료를 위해 온새가 보호자의 현실과 마음까지 <br>함께 살피며 그 여정을 함께 하겠습니다.</h1>
-          <a href="{% url 'community:tips_list' %}" class="intro-btn">생활 백서</a>
-        </div>
-      </div> {% endcomment %}
+
     </div>
     
     <!-- 네비게이션 버튼 -->
@@ -55,7 +52,8 @@
 
 <div class="inner">
   <main>
-    <section class="list-container">
+    <!-- 서비스 목록 - AOS 페이드업 효과 -->
+    <section class="list-container" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
       <a href="{% url 'medical:checkup' %}" class="service-box">
         <div class="service-image">
           <img src="{% static 'images/건강검진.png' %}" alt="건강검진">
@@ -88,7 +86,8 @@
       </a>
     </section>
 
-    <section class="notice">
+    <!-- 진료안내 섹션 - AOS 페이드업 효과 -->
+    <section class="notice" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
       <div class="notice-header">
         <h2>진료안내</h2>
         <p>온새동물의료센터는 자세한 정보를 제공하며<br>
@@ -159,7 +158,8 @@
       </div>
     </section>
 
-    <section class="guidebook">
+    <!-- 반려동물 생활백서 섹션 - AOS 페이드업 효과 -->
+    <section class="guidebook" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
       <div class="guidebook-header">
         <h2>반려동물 생활백서</h2>
         <p>반려동물과 보호자의 건강하고 행복한 일상을 위해<br>
@@ -190,7 +190,8 @@
       </div>
     </section>
 
-    <section class="case">
+    <!-- 치료케이스 섹션 - AOS 페이드업 효과 -->
+    <section class="case" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
       <div class="case-header">
         <h2>치료케이스</h2>
         <p>온새동물의료센터는 실제 치료 사례를 바탕으로<br>
@@ -199,6 +200,7 @@
           보호자님들께 도움이 되고 안심이 될 수 있도록 최선을 다하겠습니다.</p>
       </div>
       
+      <!-- 카테고리 탭 -->
       <div class="case-tabs">
         <button class="tab-btn active" data-category="all">전체</button>
         <button class="tab-btn" data-category="internal">내과</button>
@@ -206,40 +208,107 @@
         <button class="tab-btn" data-category="dental">치과</button>
       </div>
       
-      <div class="case-slider">
-        <div class="case-wrapper">
-          {% if cases %}
-            {% for case in cases %}
-              <div class="case-card">
+      <!-- 커스텀 슬라이더 -->
+      <div class="case-slider-container">
+        <div class="case-slider" id="caseSlider">
+          <div class="case-slide-wrapper">
+            
+            <!-- 슬라이드 1 -->
+            <div class="case-slide center" data-category="internal">
+              <a href="{% url 'cases:detail' 1 %}" class="case-card">
                 <div class="card-image">
-                  <img src="{{ case.image.url }}" alt="{{ case.title }}">
+                  <img src="{% static 'images/예시1.png' %}" alt="고양이 이미지">
                 </div>
                 <div class="card-info">
-                  <div class="case-tag">[{{ case.category.name }}]</div>
-                  <h3>{{ case.title }}</h3>
-                  <p>{{ case.description|truncatechars:100 }}</p>
+                  <div class="case-tag">[내과]</div>
+                  <h3>고양이 중성화 리뷰</h3>
+                  <p>안녕하세요! 온새동물의료센터 입니다. 오늘은 약 6개월, 체중 1.3kg 암컷 고양이 중성화 수술을 진행했습니다. 수술 과정과 회복 과정을 자세히 안내드리겠습니다.</p>
                 </div>
-              </div>
-            {% endfor %}
-          {% else %}
-            <div class="case-card">
-              <div class="card-image">
-                <img src="{% static 'images/예시2.png' %}" alt="치료 케이스 이미지">
-              </div>
-              <div class="card-info">
-                <div class="case-tag">[내과]</div>
-                <h3>고양이 중성화 리뷰</h3>
-                <p>안녕하세요! 온새동물의료센터 입니다. 오늘은 약 6개월,체중 1.3kg 암컷 고양이 중성화 수술을 진행했습니다.</p>
-              </div>
+              </a>
             </div>
-          {% endif %}
+            
+            <!-- 슬라이드 2 -->
+            <div class="case-slide" data-category="surgery">
+              <a href="{% url 'cases:detail' 2 %}" class="case-card">
+                <div class="card-image">
+                  <img src="{% static 'images/예시1.png' %}" alt="강아지 이미지">
+                </div>
+                <div class="card-info">
+                  <div class="case-tag">[외과]</div>
+                  <h3>강아지 종양 제거 수술</h3>
+                  <p>7세 골든 리트리버의 복부 종양 제거 수술 사례입니다. 조기 발견을 통해 성공적으로 완전 절제가 가능했으며, 현재 건강한 회복 상태를 보이고 있습니다.</p>
+                </div>
+              </a>
+            </div>
+            
+            <!-- 슬라이드 3 -->
+            <div class="case-slide" data-category="dental">
+              <a href="{% url 'cases:detail' 3 %}" class="case-card">
+                <div class="card-image">
+                  <img src="{% static 'images/예시1.png' %}" alt="고양이 이미지">
+                </div>
+                <div class="card-info">
+                  <div class="case-tag">[치과]</div>
+                  <h3>고양이 치석 제거 및 치료</h3>
+                  <p>5세 페르시안 고양이의 심한 치석과 잇몸염 치료 사례입니다. 전신마취 하에 스케일링과 발치를 진행했으며, 현재 구강 건강이 크게 개선되었습니다.</p>
+                </div>
+              </a>
+            </div>
+            
+            <!-- 슬라이드 4 -->
+            <div class="case-slide" data-category="internal">
+              <a href="{% url 'cases:detail' 4 %}" class="case-card">
+                <div class="card-image">
+                  <img src="{% static 'images/예시1.png' %}" alt="강아지 이미지">
+                </div>
+                <div class="card-info">
+                  <div class="case-tag">[내과]</div>
+                  <h3>강아지 위장관 질환 치료</h3>
+                  <p>3세 비글의 만성 위장관 질환 치료 사례입니다. 정확한 진단을 통해 맞춤형 치료를 진행했으며, 현재 식욕과 활력이 크게 개선된 상태입니다.</p>
+                </div>
+              </a>
+            </div>
+            
+            <!-- 슬라이드 5 -->
+            <div class="case-slide" data-category="surgery">
+              <a href="{% url 'cases:detail' 5 %}" class="case-card">
+                <div class="card-image">
+                  <img src="{% static 'images/예시1.png' %}" alt="고양이 이미지">
+                </div>
+                <div class="card-info">
+                  <div class="case-tag">[외과]</div>
+                  <h3>고양이 골절 수술</h3>
+                  <p>1세 고양이의 대퇴골 골절 수술 사례입니다. 정밀한 수술을 통해 완전한 회복을 도모했으며, 현재 정상적인 보행이 가능한 상태로 회복되었습니다.</p>
+                </div>
+              </a>
+            </div>
+            
+          </div>
+        </div>
+        
+        <!-- 하단 컨트롤 영역 (화살표 + MORE 버튼) -->
+        <div class="slider-bottom-controls">
+          <button class="slider-btn prev-btn" id="prevBtn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          
+          <a href="{% url 'cases:list' %}" class="more-btn">MORE</a>
+          
+          <button class="slider-btn next-btn" id="nextBtn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
         </div>
       </div>
     </section>
   </main>
 </div>
 
-<section class="directions">
+<!-- 오시는 길 섹션 - AOS 페이드업 효과 -->
+<section class="directions" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
   <div class="directions-header">
     <h2>오시는 길</h2>
   </div>
@@ -286,8 +355,19 @@
 {% block extra_scripts %}
 
 <!-- Swiper 초기화 -->
+<script src="{% static 'js/slider.js' %}"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+    // AOS 초기화
+    AOS.init({
+      duration: 800,        // 애니메이션 지속시간
+      easing: 'ease-out',   // 이징 함수
+      once: true,           // 한 번만 실행
+      offset: 50,           // 트리거 오프셋
+      delay: 0              // 기본 지연시간
+    });
+    
+    // Swiper 초기화
     const heroSwiper = new Swiper('.hero-swiper', {
       // 자동 재생
       autoplay: {
