@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}온새동물의료센터{% endblock %}</title>
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/header.css' %}">
   <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-  <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=dw2jyey460"></script>
   {% block extra_head %}{% endblock %}
 </head>
 <body>
@@ -22,6 +22,47 @@
               <img src="{% static 'images/logo.png' %}" alt="온새동물의료센터">
             </a>
           </div>
+          
+          <!-- PC 네비게이션 메뉴 -->
+          <nav class="pc-nav">
+            <ul class="nav-menu">
+              <li class="nav-item">
+                <a href="{% url 'hospital:intro' %}" class="nav-link">병원소개</a>
+                <div class="dropdown-menu">
+                  <a href="{% url 'hospital:intro' %}" class="dropdown-item">인삿말</a>
+                  <a href="{% url 'hospital:doctor_list' %}" class="dropdown-item">의료진 소개</a>
+                  <a href="{% url 'hospital:equip_list' %}" class="dropdown-item">병원 둘러보기</a>
+                  <a href="{% url 'hospital:location' %}" class="dropdown-item">진료시간/오시는길</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'medical:checkup' %}" class="nav-link">진료과목</a>
+                <div class="dropdown-menu">
+                  <a href="{% url 'medical:checkup' %}" class="dropdown-item">건강검진</a>
+                  <a href="{% url 'medical:internal' %}" class="dropdown-item">일반 내과</a>
+                  <a href="{% url 'medical:special' %}" class="dropdown-item">중증 내과</a>
+                  <a href="{% url 'medical:surgery' %}" class="dropdown-item">외과</a>
+                  <a href="{% url 'medical:dental' %}" class="dropdown-item">치과/안과</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'cases:list' %}" class="nav-link">치료케이스</a>
+                <div class="dropdown-menu">
+                  <a href="{% url 'cases:list' %}" class="dropdown-item">치료케이스</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'community:notice_list' %}" class="nav-link">커뮤니티</a>
+                <div class="dropdown-menu">
+                  <a href="{% url 'community:notice_list' %}" class="dropdown-item">공지사항</a>
+                  <a href="{% url 'community:event_list' %}" class="dropdown-item">이벤트</a>
+                  <a href="{% url 'community:tips_list' %}" class="dropdown-item">반려동물 생활백서</a>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          
+          <!-- 모바일 햄버거 메뉴 버튼 -->
           <div class="menu-btn">
             <span></span>
             <span></span>
@@ -30,6 +71,51 @@
         </div>
       </header>
     </div>
+
+    <!-- 모바일 메뉴 오버레이 -->
+    <div class="close-overlay" id="close-overlay"></div>
+
+    <!-- 모바일 네비게이션 메뉴 -->
+    <nav class="mobile-menu" id="mobile-menu">
+      <div class="menu-content">
+        <div class="menu-section">
+          <div class="menu-title" data-menu="hospital">병원소개</div>
+          <div class="sub-menu" id="hospital-menu">
+            <a href="#" class="sub-menu-item">인삿말</a>
+            <a href="#" class="sub-menu-item">의료진 소개</a>
+            <a href="#" class="sub-menu-item">병원 둘러보기</a>
+            <a href="#" class="sub-menu-item">진료시간/오시는길</a>
+          </div>
+        </div>
+
+        <div class="menu-section">
+          <div class="menu-title" data-menu="medical">진료과목</div>
+          <div class="sub-menu" id="medical-menu">
+            <a href="#" class="sub-menu-item">건강검진</a>
+            <a href="#" class="sub-menu-item">일반 내과</a>
+            <a href="#" class="sub-menu-item">중증 내과</a>
+            <a href="#" class="sub-menu-item">외과</a>
+            <a href="#" class="sub-menu-item">치과/안과</a>
+          </div>
+        </div>
+
+        <div class="menu-section">
+          <div class="menu-title" data-menu="cases">치료케이스</div>
+          <div class="sub-menu" id="cases-menu">
+            <a href="#" class="sub-menu-item">치료케이스</a>
+          </div>
+        </div>
+
+        <div class="menu-section">
+          <div class="menu-title" data-menu="community">커뮤니티</div>
+          <div class="sub-menu" id="community-menu">
+            <a href="#" class="sub-menu-item">공지사항</a>
+            <a href="#" class="sub-menu-item">이벤트</a>
+            <a href="#" class="sub-menu-item">반려동물 생활백서</a>
+          </div>
+        </div>
+      </div>
+    </nav>
     
     {% block content %}{% endblock %}
     
@@ -60,7 +146,11 @@
       </div>
     </footer>
   </div>
+  
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=dw2jyey460"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+  
   <script>
     // API 로드 완료 후 실행될 함수
     function initMap() {
