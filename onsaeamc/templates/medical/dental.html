@@ -23,23 +23,23 @@
 <div class="checkup-container">
   <div class="inner">
     <!-- 인사말 제목 (초록색 작대기 포함) -->
-    <div class="title-area">
+    <div class="title-area" data-aos="fade-up" data-aos-duration="600">
       <div class="title-line"></div>
       <h2>치과/안과</h2>
     </div>
     
     <!-- 내과 대표 이미지 -->
-    <div class="department-image">
+    <div class="department-image" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
       <img src="{% static 'images/치과안과/치과.png' %}" alt="치과안과">
     </div>
     
     <!-- 진료과목 네비게이션 버튼 -->
-    <div class="department-nav">
+    <div class="department-nav" data-aos="fade-up" data-aos-delay="100" data-aos-duration="500">
       <a href="#" class="nav-button">치과</a>
     </div>
     
     <!-- 진료과목 섹션: 내과 진료 목록 1 -->
-    <div class="department-section">
+    <div class="department-section" data-aos="fade-up" data-aos-delay="150" data-aos-duration="600">
       <h3 class="department-subtitle">치과</h3>
       
       <div class="department-desc">
@@ -48,15 +48,15 @@
     </div>
     
     <!-- 구분선 -->
-    <div class="section-divider"></div>
+    <div class="section-divider" data-aos="fade" data-aos-delay="100" data-aos-duration="400"></div>
     
     <!-- 진료과목 네비게이션 버튼 -->
-    <div class="department-nav">
+    <div class="department-nav" data-aos="fade-up" data-aos-delay="100" data-aos-duration="500">
       <a href="#" class="nav-button">안과</a>
     </div>
     
     <!-- 진료과목 섹션: 내과 진료 목록 2 -->
-    <div class="department-section">
+    <div class="department-section" data-aos="fade-up" data-aos-delay="150" data-aos-duration="600">
       <h3 class="department-subtitle">안과</h3>
       
       <div class="department-desc">
@@ -69,6 +69,13 @@
 
 {% block extra_scripts %}
 <script>
-  // 여기에 JavaScript 코드 작성
+  // AOS 초기화 - 다른 내과 페이지들과 동일한 설정
+  AOS.init({
+    duration: 600,        // 기본 600ms로 빠르게
+    easing: 'ease-out',   // 자연스러운 이징
+    once: true,           // 한 번만 실행
+    offset: 80,           // 80px 일찍 시작
+    disable: false        // 모든 디바이스에서 실행
+  });
 </script>
 {% endblock %}

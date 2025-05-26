@@ -87,7 +87,9 @@
   line-height: 1.8;
   color: #555;
   font-size: 16px;
-  text-align: center;
+  text-align: left;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 /* 의료진 스타일 */
 .doctors-content {
@@ -325,6 +327,27 @@
   font-size: 14px;
   color: #777;
   margin-bottom: 5px;
+}
+
+/* 410px 이하에서 최적화 */
+@media (max-width: 410px) {
+  .intro-content p {
+    font-size: 14px;
+    line-height: 1.7;
+    padding: 0 15px;
+  }
+  
+  /* 작은 화면에서는 br 태그 숨기기 */
+  .intro-content p br {
+
+  }
+}
+
+@media (max-width: 360px) {
+  .intro-content p {
+    font-size: 13px;
+    padding: 0 10px;
+  }
 }
 
 /* 태블릿 버전 (768px 이상) */
