@@ -30,140 +30,84 @@
     
     <!-- 검색 기능 -->
     <div class="search-container">
-      <div class="search-box">
-        <select class="search-category">
-          <option value="title">제목</option>
-          <option value="content">내용</option>
-          <option value="all">제목+내용</option>
+      <form method="GET" class="search-box">
+        <select name="category" class="search-category">
+          <option value="all" {% if search_category == 'all' %}selected{% endif %}>제목+내용</option>
+          <option value="title" {% if search_category == 'title' %}selected{% endif %}>제목</option>
+          <option value="content" {% if search_category == 'content' %}selected{% endif %}>내용</option>
         </select>
-        <input type="text" class="search-input" placeholder="검색어를 입력하세요">
-        <button class="search-button">
+        <input type="text" name="search" class="search-input" placeholder="검색어를 입력하세요" value="{{ search_query }}">
+        <button type="submit" class="search-button">
           <i class="search-icon">🔍</i>
         </button>
-      </div>
+      </form>
     </div>
     
-    <!-- 공지사항 목록 -->
+    <!-- 이벤트 목록 -->
     <div class="notice-list">
-      <!-- 중요 공지사항 -->
-      <div class="notice-item important">
-        <div class="notice-badge">중요</div>
+      {% for post in page_obj %}
+      <div class="notice-item {% if post.is_active %}active-event{% endif %}" onclick="location.href='{% url 'community:event_detail' post.id %}'">
+        {% if post.is_active %}
+        <div class="notice-badge">진행중</div>
+        {% else %}
+        <div class="notice-badge ended">종료</div>
+        {% endif %}
         <div class="notice-content">
-          <h3 class="notice-title">2024년 추석 연휴 진료 안내</h3>
+          <h3 class="notice-title">{{ post.title }}</h3>
           <div class="notice-meta">
-            <span class="notice-date">2024.09.10</span>
-            <span class="notice-views">조회 245</span>
+            <span class="notice-date">{{ post.start_date|date:"Y.m.d" }} ~ {{ post.end_date|date:"Y.m.d" }}</span>
+            {% if post.updated_at != post.created_at %}
+            <span class="notice-updated">(수정: {{ post.updated_at|date:"m.d" }})</span>
+            {% endif %}
           </div>
-          <p class="notice-desc">추석 연휴 기간 중 진료 일정에 대해 안내드립니다. 응급상황 시 연락처도 함께 확인하시기 바랍니다.</p>
         </div>
       </div>
-      
-      <!-- 일반 공지사항 -->
-      <div class="notice-item">
-        <div class="notice-content">
-          <h3 class="notice-title">온새동물의료센터 홈페이지 리뉴얼 완료</h3>
-          <div class="notice-meta">
-            <span class="notice-date">2024.08.25</span>
-            <span class="notice-views">조회 156</span>
-          </div>
-          <p class="notice-desc">더 편리하고 직관적인 홈페이지로 새롭게 단장했습니다. 온라인 예약 시스템도 함께 개선되었습니다.</p>
-        </div>
+      {% empty %}
+      <div class="no-results">
+        <p>등록된 이벤트가 없습니다.</p>
       </div>
-      
-      <div class="notice-item">
-        <div class="notice-content">
-          <h3 class="notice-title">여름철 반려동물 건강관리 주의사항</h3>
-          <div class="notice-meta">
-            <span class="notice-date">2024.07.15</span>
-            <span class="notice-views">조회 189</span>
-          </div>
-          <p class="notice-desc">무더운 여름철, 반려동물의 건강을 지키기 위한 주의사항과 응급처치 방법에 대해 안내드립니다.</p>
-        </div>
-      </div>
-      
-      <div class="notice-item">
-        <div class="notice-content">
-          <h3 class="notice-title">건강검진 패키지 할인 이벤트</h3>
-          <div class="notice-meta">
-            <span class="notice-date">2024.07.01</span>
-            <span class="notice-views">조회 98</span>
-          </div>
-          <p class="notice-desc">7-8월 한정! 종합건강검진 패키지를 특별 할인가로 제공합니다. 사전 예약 필수입니다.</p>
-        </div>
-      </div>
-      
-      <div class="notice-item">
-        <div class="notice-content">
-          <h3 class="notice-title">신규 의료진 박승훈 원장님 합류 안내</h3>
-          <div class="notice-meta">
-            <span class="notice-date">2024.06.20</span>
-            <span class="notice-views">조회 203</span>
-          </div>
-          <p class="notice-desc">치과 전문의 박승훈 원장님이 온새동물의료센터에 합류하게 되었습니다. 더욱 전문적인 진료를 제공하겠습니다.</p>
-        </div>
-      </div>
-      
-      <div class="notice-item">
-        <div class="notice-content">
-          <h3 class="notice-title">주차장 이용 안내</h3>
-          <div class="notice-meta">
-            <span class="notice-date">2024.06.05</span>
-            <span class="notice-views">조회 134</span>
-          </div>
-          <p class="notice-desc">병원 전용 주차장 이용 시간과 주차 요금에 대한 안내사항입니다.</p>
-        </div>
-      </div>
-      
-      <div class="notice-item">
-        <div class="notice-content">
-          <h3 class="notice-title">온새동물의료센터 개원 1주년 기념 이벤트</h3>
-          <div class="notice-meta">
-            <span class="notice-date">2024.05.15</span>
-            <span class="notice-views">조회 275</span>
-          </div>
-          <p class="notice-desc">개원 1주년을 맞아 다양한 혜택과 이벤트를 준비했습니다. 많은 관심과 참여 부탁드립니다.</p>
-        </div>
-      </div>
-      
-      <div class="notice-item">
-        <div class="notice-content">
-          <h3 class="notice-title">예방접종 일정 안내</h3>
-          <div class="notice-meta">
-            <span class="notice-date">2024.04.28</span>
-            <span class="notice-views">조회 167</span>
-          </div>
-          <p class="notice-desc">반려동물 예방접종 스케줄과 접종 전 주의사항에 대해 안내드립니다.</p>
-        </div>
-      </div>
+      {% endfor %}
     </div>
     
     <!-- 페이지네이션 -->
+    {% if page_obj.has_other_pages %}
     <div class="pagination">
-      <a href="#" class="page-nav">&laquo;</a>
-      <a href="#" class="page-nav">&lt;</a>
-      <a href="#" class="page-number active">1</a>
-      <a href="#" class="page-number">2</a>
-      <a href="#" class="page-number">3</a>
-      <a href="#" class="page-number">4</a>
-      <a href="#" class="page-number">5</a>
-      <a href="#" class="page-nav">&gt;</a>
-      <a href="#" class="page-nav">&raquo;</a>
+      {% if page_obj.has_previous %}
+        <a href="?page=1{% if search_query %}&search={{ search_query }}&category={{ search_category }}{% endif %}" class="page-nav">&laquo;</a>
+        <a href="?page={{ page_obj.previous_page_number }}{% if search_query %}&search={{ search_query }}&category={{ search_category }}{% endif %}" class="page-nav">&lt;</a>
+      {% endif %}
+      
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <span class="page-number active">{{ num }}</span>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <a href="?page={{ num }}{% if search_query %}&search={{ search_query }}&category={{ search_category }}{% endif %}" class="page-number">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+      
+      {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}{% if search_query %}&search={{ search_query }}&category={{ search_category }}{% endif %}" class="page-nav">&gt;</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}{% if search_query %}&search={{ search_query }}&category={{ search_category }}{% endif %}" class="page-nav">&raquo;</a>
+      {% endif %}
     </div>
+    {% endif %}
   </div>
 </div>
 {% endblock %}
 
 {% block extra_scripts %}
 <script>
-  // 공지사항 클릭 시 상세 페이지로 이동 (나중에 구현)
+  // 검색 기능
   document.addEventListener('DOMContentLoaded', function() {
-    const noticeItems = document.querySelectorAll('.notice-item');
+    const searchForm = document.querySelector('.search-box');
+    const searchInput = document.querySelector('.search-input');
     
-    noticeItems.forEach(item => {
-      item.addEventListener('click', function() {
-        // 나중에 상세 페이지 URL로 이동
-        console.log('공지사항 클릭:', this.querySelector('.notice-title').textContent);
-      });
+    // 엔터키로 검색
+    searchInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        searchForm.submit();
+      }
     });
   });
 </script>

@@ -467,14 +467,17 @@ header {
   margin-bottom: 0;
 }
 
+/* 수정된 코드 */
 .card-image {
   width: 100%;
-  height: auto;
+  height: 250px; /* 고정 높이 설정 */
+  overflow: hidden; /* 넘치는 부분 숨김 */
 }
 
 .card-image img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover; /* 비율 유지하면서 크롭 */
   display: block;
 }
 
@@ -956,10 +959,9 @@ footer {
   margin-bottom: 0;
 }
 
-.card-image {
-  width: 100%;
-  height: auto;
-}
+  .card-image {
+    height: 300px;
+  }
 
 .card-image img {
   width: 100%;
@@ -1426,7 +1428,9 @@ footer {
   .inner {
     max-width: 1200px;
   }
-  
+    .card-image {
+    height: 350px;
+  }
   .header-container {
     width: 1200px;
     height: 60px;

@@ -184,6 +184,84 @@
   padding: 0 15px;
   cursor: pointer;
 }
+/* 생활백서용 추가 스타일 */
+.case-title a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.case-title a:hover {
+  color: #468534;
+}
+
+.case-meta {
+  margin-top: auto;
+  padding-top: 15px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.case-date {
+  font-size: 13px;
+  color: #999;
+  font-weight: 500;
+}
+
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  color: #777;
+}
+
+.no-results p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* 검색 폼 스타일 개선 */
+.search-box {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.search-button {
+  background-color: #468534;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #3a6e2a;
+}
+
+/* 카드 호버 효과 개선 */
+.case-item {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.case-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* 태블릿에서 메타 정보 스타일 */
+@media (min-width: 768px) {
+  .case-meta {
+    padding-top: 20px;
+  }
+  
+  .case-date {
+    font-size: 14px;
+  }
+  
+  .no-results {
+    padding: 80px 20px;
+  }
+  
+  .no-results p {
+    font-size: 18px;
+  }
+}
 
 /* 태블릿 버전 (768px 이상) - 2열 그리드 */
 @media (min-width: 768px) {
@@ -235,10 +313,40 @@
   .search-input {
     padding: 12px 15px;
   }
+    .case-meta {
+    padding-top: 20px;
+  }
+  
+  .case-date {
+    font-size: 14px;
+  }
+  
+  .no-results {
+    padding: 80px 20px;
+  }
+  
+  .no-results p {
+    font-size: 18px;
+  }
 }
 
 /* PC 버전 (1024px 이상) - 3열 그리드 */
 @media (min-width: 1024px) {
+    .case-meta {
+    padding-top: 20px;
+  }
+  
+  .case-date {
+    font-size: 14px;
+  }
+  
+  .no-results {
+    padding: 100px 20px;
+  }
+  
+  .no-results p {
+    font-size: 20px;
+  }
   .cases-container {
     padding: 80px 0;
   }

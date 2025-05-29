@@ -15,6 +15,7 @@
   margin-bottom: 30px;
 }
 
+
 .search-box {
   display: flex;
   border: 1px solid #ddd;
@@ -323,5 +324,131 @@
     width: 45px;
     height: 45px;
     font-size: 15px;
+  }
+}
+
+/* notice.css에 추가할 스타일들 */
+
+/* 검색 관련 개선 */
+.search-box {
+  position: relative;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #2F6022;
+}
+
+/* 이벤트 상태 배지 */
+.notice-badge.ended {
+  background-color: #95a5a6;
+  color: white;
+}
+
+.active-event {
+  border-left-color: #27ae60;
+}
+
+.active-event .notice-title {
+  color: #27ae60;
+}
+
+/* 수정일 표시 */
+.notice-updated {
+  color: #999;
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+/* 결과 없음 표시 */
+.no-results {
+  text-align: center;
+  padding: 60px 20px;
+  color: #777;
+  background-color: #fff;
+  border-radius: 8px;
+  margin: 20px 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.no-results p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* 클릭 가능한 아이템 스타일 */
+.notice-item {
+  cursor: pointer;
+}
+
+.notice-item:active {
+  transform: translateY(1px);
+}
+
+/* 페이지네이션 개선 */
+.pagination {
+  gap: 5px;
+}
+
+.page-number.active {
+  cursor: default;
+}
+
+.page-nav:hover:not(.disabled), 
+.page-number:hover:not(.active) {
+  background-color: #f0f8f0;
+  border-color: #2F6022;
+  color: #2F6022;
+}
+
+/* 반응형 개선 */
+@media (max-width: 480px) {
+  .notice-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  
+  .notice-updated {
+    margin-left: 0;
+  }
+  
+  .pagination {
+    flex-wrap: wrap;
+    gap: 3px;
+  }
+  
+  .page-nav, .page-number {
+    width: 35px;
+    height: 35px;
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 768px) {
+  .no-results {
+    padding: 80px 20px;
+  }
+  
+  .no-results p {
+    font-size: 18px;
+  }
+  
+  .notice-updated {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .no-results {
+    padding: 100px 20px;
+  }
+  
+  .no-results p {
+    font-size: 20px;
+  }
+  
+  .notice-updated {
+    font-size: 14px;
   }
 }

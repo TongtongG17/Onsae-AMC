@@ -1,0 +1,403 @@
+/* notice-detail.css */
+
+/* 공통 스타일 (모바일 기준: 425px 이하) */
+.detail-container {
+  width: 100%;
+  padding: 30px 0;
+  background-color: #f9f9f9;
+}
+
+.detail-inner {
+  width: calc(100% - 40px);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 뒤로가기 버튼 */
+.back-button {
+  margin-bottom: 20px;
+}
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  color: #666;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+  background-color: #2F6022;
+  color: white;
+  border-color: #2F6022;
+}
+
+.back-icon {
+  margin-right: 6px;
+  font-size: 16px;
+}
+
+/* 게시글 헤더 */
+.post-header {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.post-badge {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.post-badge.important {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.post-badge.active {
+  background-color: #27ae60;
+  color: white;
+}
+
+.post-badge.ended {
+  background-color: #95a5a6;
+  color: white;
+}
+
+.post-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.4;
+  margin-bottom: 20px;
+  word-break: keep-all;
+}
+
+.post-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+}
+
+.meta-label {
+  color: #777;
+  margin-right: 10px;
+  min-width: 50px;
+  font-weight: 500;
+}
+
+.meta-value {
+  color: #555;
+}
+
+/* 게시글 내용 */
+.post-content {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.post-image {
+  width: 100%;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  text-align: center;
+}
+
+.post-image img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.post-image img:hover {
+  transform: scale(1.02);
+}
+
+.post-text {
+  padding: 25px;
+  color: #333;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.post-text p {
+  margin-bottom: 16px;
+}
+
+.post-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* 게시글 네비게이션 */
+.post-navigation {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.post-nav-item {
+  padding: 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.post-nav-item:last-child {
+  border-bottom: none;
+}
+
+.post-nav-label {
+  display: block;
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.post-nav-title {
+  display: block;
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.post-nav-title:hover {
+  color: #2F6022;
+}
+
+/* 액션 버튼 */
+.post-actions {
+  text-align: center;
+}
+
+.btn-list {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: #2F6022;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.btn-list:hover {
+  background-color: #245018;
+}
+
+/* 태블릿 버전 (768px 이상) */
+@media (min-width: 768px) {
+  .detail-container {
+    padding: 50px 0;
+  }
+  
+  .back-button {
+    margin-bottom: 30px;
+  }
+  
+  .btn-back {
+    padding: 10px 20px;
+    font-size: 15px;
+  }
+  
+  .post-header {
+    padding: 35px;
+    margin-bottom: 30px;
+  }
+  
+  .post-badge {
+    font-size: 13px;
+    padding: 6px 15px;
+    margin-bottom: 20px;
+  }
+  
+  .post-title {
+    font-size: 22px;
+    margin-bottom: 25px;
+  }
+  
+  .post-meta {
+    flex-direction: row;
+    gap: 20px;
+  }
+  
+  .meta-item {
+    font-size: 14px;
+  }
+  
+  .meta-label {
+    min-width: 60px;
+  }
+  
+  .post-content {
+    margin-bottom: 30px;
+  }
+  
+  .post-image {
+    /* 태블릿에서도 높이 제한 없음 */
+  }
+  
+  .post-text {
+    padding: 35px;
+    font-size: 16px;
+  }
+  
+  .post-text p {
+    margin-bottom: 20px;
+  }
+  
+  .post-navigation {
+    margin-bottom: 30px;
+  }
+  
+  .post-nav-item {
+    padding: 25px;
+  }
+  
+  .post-nav-label {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+  
+  .post-nav-title {
+    font-size: 15px;
+  }
+  
+  .btn-list {
+    padding: 15px 40px;
+    font-size: 15px;
+  }
+}
+
+/* PC 버전 (1024px 이상) */
+@media (min-width: 1024px) {
+  .detail-container {
+    padding: 70px 0;
+  }
+  
+  .detail-container .inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .back-button {
+    margin-bottom: 40px;
+  }
+  
+  .btn-back {
+    padding: 12px 25px;
+    font-size: 16px;
+  }
+  
+  .post-header {
+    padding: 40px;
+    margin-bottom: 40px;
+  }
+  
+  .post-badge {
+    font-size: 14px;
+    padding: 8px 18px;
+    margin-bottom: 25px;
+  }
+  
+  .post-title {
+    font-size: 26px;
+    margin-bottom: 30px;
+  }
+  
+  .post-meta {
+    gap: 30px;
+  }
+  
+  .meta-item {
+    font-size: 15px;
+  }
+  
+  .meta-label {
+    min-width: 70px;
+  }
+  
+  .post-content {
+    margin-bottom: 40px;
+  }
+  
+  .post-image {
+    /* PC에서도 높이 제한 없음 */
+  }
+  
+  .post-text {
+    padding: 40px;
+    font-size: 17px;
+  }
+  
+  .post-text p {
+    margin-bottom: 24px;
+  }
+  
+  .post-navigation {
+    margin-bottom: 40px;
+  }
+  
+  .post-nav-item {
+    padding: 30px;
+  }
+  
+  .post-nav-item.prev {
+    border-right: 1px solid #f0f0f0;
+  }
+  
+  .post-nav-item.next {
+    border-left: 1px solid #f0f0f0;
+  }
+  
+  /* PC에서는 이전글/다음글을 좌우로 배치 */
+  .post-navigation {
+    display: flex;
+  }
+  
+  .post-nav-item {
+    flex: 1;
+    border-bottom: none;
+  }
+  
+  .post-nav-label {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+  
+  .post-nav-title {
+    font-size: 16px;
+  }
+  
+  .btn-list {
+    padding: 18px 50px;
+    font-size: 16px;
+  }
+}

@@ -22,127 +22,110 @@
 <!-- 콘텐츠 섹션 -->
 <div class="cases-container">
   <div class="inner">
-    <!-- 인사말 제목 (초록색 작대기 포함) -->
+    <!-- 제목 영역 -->
     <div class="title-area">
       <div class="title-line"></div>
       <h2>치료케이스</h2>
     </div>
     
-     <!-- 탭 메뉴 -->
+    <!-- 탭 메뉴 -->
     <div class="cases-tabs">
-      <button class="tab-btn active" data-category="all">전체</button>
-      <button class="tab-btn" data-category="internal">내과</button>
-      <button class="tab-btn" data-category="surgery">외과</button>
-      <button class="tab-btn" data-category="dental">치과</button>
-    </div>
-    
-    <!-- 케이스 목록 -->
-    <div class="cases-list">
-      <!-- 케이스 아이템 1 -->
-      <div class="case-item" data-category="internal">
-        <div class="case-image">
-          <img src="{% static 'images/예시2.png' %}" alt="고양이 신부전증상 치료 이미지">
-        </div>
-        <div class="case-content">
-          <div class="case-department">내과</div>
-          <h3 class="case-title">고양이 신부전증상 만성신부전 급성신부전 진행 치료 후기</h3>
-          <p class="case-desc">안녕하세요! 온새동물의료센터입니다. 오늘은 나이 7살, 몸무게 4kg 중성화 완료된 야아 고양이 고양이만성신부전에 따른...</p>
-        </div>
-      </div>
-      
-      <!-- 케이스 아이템 2 -->
-      <div class="case-item" data-category="surgery">
-        <div class="case-image">
-          <img src="{% static 'images/예시2.png' %}" alt="강아지 슬개골 탈구 수술 이미지">
-        </div>
-        <div class="case-content">
-          <div class="case-department">외과</div>
-          <h3 class="case-title">강아지 슬개골 탈구 수술 후기</h3>
-          <p class="case-desc">안녕하세요! 온새동물의료센터입니다. 오늘은 5살 말티즈 강아지의 슬개골 탈구 수술 케이스를 소개해드립니다. 이 아이는...</p>
-        </div>
-      </div>
-      
-      <!-- 케이스 아이템 3 -->
-      <div class="case-item" data-category="dental">
-        <div class="case-image">
-          <img src="{% static 'images/예시2.png' %}" alt="고양이 림포마 림프종 검사 이미지">
-        </div>
-        <div class="case-content">
-          <div class="case-department">치과</div>
-          <h3 class="case-title">고양이 림포마 림프종 검사 후기</h3>
-          <p class="case-desc">안녕하세요! 온새동물의료센터입니다. 오늘은 나이 8살, 몸무게 3kg 코리안숏헤어의 고양이 림포마 검사 후기를 소개해 드릴까 합니다. ...</p>
-        </div>
-      </div>
-      
-      <!-- 케이스 아이템 4 -->
-      <div class="case-item" data-category="internal">
-        <div class="case-image">
-          <img src="{% static 'images/예시2.png' %}" alt="강아지 췌장염 치료 이미지">
-        </div>
-        <div class="case-content">
-          <div class="case-department">내과</div>
-          <h3 class="case-title">강아지 췌장염 치료 사례</h3>
-          <p class="case-desc">안녕하세요! 온새동물의료센터입니다. 오늘은 3살 포메라니안의 췌장염 치료 사례를 공유합니다. 식욕부진과 구토 증상으로...</p>
-        </div>
-      </div>
-    </div>
-    
-    <!-- 페이지네이션 -->
-    <div class="pagination">
-      <a href="#" class="page-nav">&laquo;</a>
-      <a href="#" class="page-nav">&lt;</a>
-      <a href="#" class="page-number active">1</a>
-      <a href="#" class="page-number">2</a>
-      <a href="#" class="page-number">3</a>
-      <a href="#" class="page-number">4</a>
-      <a href="#" class="page-number">5</a>
-      <a href="#" class="page-number">6</a>
-      <a href="#" class="page-nav">&gt;</a>
-      <a href="#" class="page-nav">&raquo;</a>
+      <a href="?category=all" class="tab-btn {% if category == 'all' %}active{% endif %}">전체</a>
+      <a href="?category=internal" class="tab-btn {% if category == 'internal' %}active{% endif %}">내과</a>
+      <a href="?category=surgery" class="tab-btn {% if category == 'surgery' %}active{% endif %}">외과</a>
+      <a href="?category=dental" class="tab-btn {% if category == 'dental' %}active{% endif %}">치과+안과</a>
     </div>
     
     <!-- 검색 기능 -->
     <div class="search-container">
-      <div class="search-box">
-        <select class="search-category">
-          <option value="title">제목</option>
-          <option value="content">내용</option>
+      <form method="GET" class="search-box">
+        <input type="hidden" name="category" value="{{ category }}">
+        <select name="search_category" class="search-category">
+          <option value="all" {% if search_category == 'all' %}selected{% endif %}>전체</option>
+          <option value="title" {% if search_category == 'title' %}selected{% endif %}>제목</option>
+          <option value="content" {% if search_category == 'content' %}selected{% endif %}>내용</option>
         </select>
-        <input type="text" class="search-input" placeholder="검색어를 입력하세요">
-        <button class="search-button">
+        <input type="text" name="search" class="search-input" placeholder="검색어를 입력하세요" value="{{ search_query }}">
+        <button type="submit" class="search-button">
           <i class="search-icon">🔍</i>
         </button>
-      </div>
+      </form>
     </div>
+    
+    <!-- 케이스 목록 -->
+    <div class="cases-list">
+      {% for case in page_obj %}
+      <div class="case-item">
+        <div class="case-image">
+          {% if case.image %}
+            <img src="{{ case.image.url }}" alt="{{ case.title }}">
+          {% else %}
+            <img src="{% static 'images/예시2.png' %}" alt="{{ case.title }}">
+          {% endif %}
+        </div>
+        <div class="case-content">
+          <div class="case-department">{{ case.get_category_display }}</div>
+          <h3 class="case-title">
+            <a href="{% url 'cases:detail' case.id %}">{{ case.title }}</a>
+          </h3>
+          <p class="case-desc">{{ case.content|truncatewords:15|striptags }}</p>
+          <div class="case-meta">
+            <span class="case-date">{{ case.created_at|date:"Y.m.d" }}</span>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <div class="no-results">
+        <p>등록된 치료케이스가 없습니다.</p>
+      </div>
+      {% endfor %}
+    </div>
+    
+    <!-- 페이지네이션 -->
+    {% if page_obj.has_other_pages %}
+    <div class="pagination">
+      {% if page_obj.has_previous %}
+        <a href="?page=1{% if search_query %}&search={{ search_query }}&search_category={{ search_category }}{% endif %}{% if category != 'all' %}&category={{ category }}{% endif %}" class="page-nav">&laquo;</a>
+        <a href="?page={{ page_obj.previous_page_number }}{% if search_query %}&search={{ search_query }}&search_category={{ search_category }}{% endif %}{% if category != 'all' %}&category={{ category }}{% endif %}" class="page-nav">&lt;</a>
+      {% endif %}
+      
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <span class="page-number active">{{ num }}</span>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <a href="?page={{ num }}{% if search_query %}&search={{ search_query }}&search_category={{ search_category }}{% endif %}{% if category != 'all' %}&category={{ category }}{% endif %}" class="page-number">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+      
+      {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}{% if search_query %}&search={{ search_query }}&search_category={{ search_category }}{% endif %}{% if category != 'all' %}&category={{ category }}{% endif %}" class="page-nav">&gt;</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}{% if search_query %}&search={{ search_query }}&search_category={{ search_category }}{% endif %}{% if category != 'all' %}&category={{ category }}{% endif %}" class="page-nav">&raquo;</a>
+      {% endif %}
+    </div>
+    {% endif %}
   </div>
 </div>
 {% endblock %}
 
 {% block extra_scripts %}
 <script>
-  // 탭 기능 구현
+  // 카드 클릭시 상세 페이지로 이동
   document.addEventListener('DOMContentLoaded', function() {
-    const tabButtons = document.querySelectorAll('.tab-btn');
     const caseItems = document.querySelectorAll('.case-item');
     
-    // 탭 버튼 클릭 이벤트
-    tabButtons.forEach(button => {
-      button.addEventListener('click', function() {
-        // 활성화된 버튼 클래스 변경
-        tabButtons.forEach(btn => btn.classList.remove('active'));
-        this.classList.add('active');
-        
-        // 카테고리 필터링
-        const category = this.dataset.category;
-        
-        caseItems.forEach(item => {
-          if (category === 'all' || item.dataset.category === category) {
-            item.style.display = 'flex';
-          } else {
-            item.style.display = 'none';
+    caseItems.forEach(item => {
+      item.addEventListener('click', function(e) {
+        // 링크를 직접 클릭한 경우가 아니라면
+        if (!e.target.closest('a')) {
+          const link = this.querySelector('.case-title a');
+          if (link) {
+            window.location.href = link.href;
           }
-        });
+        }
       });
+      
+      // 호버 효과를 위한 커서 설정
+      item.style.cursor = 'pointer';
     });
   });
 </script>
