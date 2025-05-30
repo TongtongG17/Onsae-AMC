@@ -46,7 +46,7 @@ DEBUG = True # 개발 중에는 True, 배포 시에는 False로 변경
 
 ALLOWED_HOSTS = ['203.245.29.204', 'onsaeamc.co.kr', 'www.onsaeamc.co.kr', 'localhost', '127.0.0.1']
 # ALLOWED_HOSTS = ['*']  
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 # Application definition
 

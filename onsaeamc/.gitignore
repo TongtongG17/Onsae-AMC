@@ -1,3 +1,26 @@
 .env
 
 .sqlite3
+
+
+# Python 캐시 파일들
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+
+# Django 관련
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+nohup.out
+
+# 정적 파일들
+staticfiles/
+
+# 환경 설정
+.env
+venv/
+env/
