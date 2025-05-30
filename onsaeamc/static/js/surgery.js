@@ -111,6 +111,68 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // 특징 이미지 클릭 확대/축소 기능
+  function initProcessImageEvents() {
+    console.log('이미지 확대 기능 초기화 시작');
+    
+    const featureImages = document.querySelectorAll('.feature-image');
+    console.log('발견된 이미지 개수:', featureImages.length);
+    
+    featureImages.forEach(function(imageContainer, index) {
+      console.log('이미지', index, '이벤트 리스너 추가');
+      
+      // 클릭 이벤트
+      imageContainer.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        console.log('이미지 클릭됨:', index);
+        
+        // 현재 확대 상태 확인
+        const isExpanded = this.classList.contains('expanded');
+        console.log('현재 확대 상태:', isExpanded);
+        
+        // 모든 이미지 축소
+        featureImages.forEach(function(otherImage) {
+          otherImage.classList.remove('expanded');
+          console.log('다른 이미지 축소');
+        });
+        
+        // 현재 이미지가 축소 상태였다면 확대
+        if (!isExpanded) {
+
+          
+          // 확대 시 스크롤
+          setTimeout(function() {
+            imageContainer.scrollIntoView({
+              behavior: 'smooth',
+              block: 'center'
+            });
+          }, 100);
+        } else {
+        }
+      });
+
+      // 키보드 접근성
+      imageContainer.setAttribute('tabindex', '0');
+      imageContainer.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          this.click();
+        }
+      });
+    });
+
+    // ESC 키로 모든 확대 해제
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        featureImages.forEach(function(imageContainer) {
+          imageContainer.classList.remove('expanded');
+        });
+      }
+    });
+
+  }
 
   // 스크롤 시 헤더 효과 (선택사항)
   function initScrollEffects() {
@@ -173,7 +235,7 @@ document.addEventListener('DOMContentLoaded', function() {
   function initAccessibility() {
     // 키보드 네비게이션 개선
     const focusableElements = document.querySelectorAll(
-      '.process-step, .feature-item, .type-category, .timeline-item'
+      '.process-step, .feature-item, .type-category, .timeline-item, .feature-image'
     );
 
     focusableElements.forEach(element => {
@@ -195,12 +257,16 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // 이미지 로딩 오류 처리
-    const images = document.querySelectorAll('.surgery-process img');
+    const images = document.querySelectorAll('.surgery-process img, .feature-image img');
     images.forEach(img => {
       img.addEventListener('error', function() {
         this.style.opacity = '0.5';
         this.alt = '이미지를 불러올 수 없습니다';
         console.warn('이미지 로딩 실패:', this.src);
+      });
+      
+      img.addEventListener('load', function() {
+        this.style.opacity = '1';
       });
     });
   }
@@ -212,13 +278,12 @@ document.addEventListener('DOMContentLoaded', function() {
     initFeatureCardEffects();
     initTypesCategoryAnimation();
     initTimelineAnimation();
-    initProcessImageEvents();
+    initProcessImageEvents(); // 이미지 확대 기능
     initScrollEffects();
     initTouchOptimization();
     initAccessibility();
     handleErrors();
     
-    console.log('외과 페이지 JavaScript 초기화 완료');
   } catch (error) {
     console.error('외과 페이지 초기화 중 오류:', error);
   }
@@ -228,8 +293,12 @@ document.addEventListener('DOMContentLoaded', function() {
   window.addEventListener('resize', function() {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
-      // 레이아웃 재계산 로직
-      console.log('외과 페이지 레이아웃 재계산');
+      // 확대된 이미지가 있다면 리사이즈 시 축소
+      const expandedImages = document.querySelectorAll('.feature-image.expanded');
+      expandedImages.forEach(img => {
+        img.classList.remove('expanded');
+      });
+
     }, 250);
   });
 });

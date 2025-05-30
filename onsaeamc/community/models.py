@@ -47,7 +47,7 @@ class Event(models.Model):
 
 
 class Tips(models.Model):
-    """반려동물 생활백서 모델"""
+    """우리집 털뭉치들 모델"""
     title = models.CharField(max_length=200, verbose_name='제목')
     content = models.TextField(verbose_name='내용')
     image = models.ImageField(upload_to='tips/', blank=True, null=True, verbose_name='이미지')
