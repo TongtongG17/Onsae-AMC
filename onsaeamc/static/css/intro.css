@@ -40,6 +40,8 @@
 .intro-container {
   width: 100%;
   padding: 40px 0;
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 /* 제목 영역 (초록색 작대기 포함) */

@@ -31,11 +31,11 @@ def intro(request):
 
 def doctor_list(request):
     """의료진 소개 페이지"""
-    return render(request, 'hospital/doctor_list.html')
+    return render(request, 'hospital/doctors.html')
 
 def equip_list(request):
     """장비 소개 페이지"""
-    return render(request, 'hospital/equip_list.html')
+    return render(request, 'hospital/equips.html')
 
 def location(request):
     """오시는 길 페이지"""

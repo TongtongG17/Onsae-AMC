@@ -56,8 +56,8 @@ class Tips(models.Model):
     updated_at = models.DateTimeField(auto_now=True, verbose_name='수정일')
     
     class Meta:
-        verbose_name = '생활백서'
-        verbose_name_plural = '생활백서'
+        verbose_name = '털뭉치들'
+        verbose_name_plural = '털뭉치들'
         ordering = ['-created_at']
     
     def __str__(self):
