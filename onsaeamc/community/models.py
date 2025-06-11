@@ -7,6 +7,12 @@ class Notice(models.Model):
     title = models.CharField(max_length=200, verbose_name='제목')
     content = models.TextField(verbose_name='내용')
     image = models.ImageField(upload_to='notices/', blank=True, null=True, verbose_name='이미지')
+    image_url = models.URLField(
+        blank=True, 
+        null=True, 
+        verbose_name='이미지 링크 URL',
+        help_text='이미지를 클릭했을 때 이동할 URL을 입력하세요'
+    )
     is_published = models.BooleanField(default=True, verbose_name='공개여부')
     created_at = models.DateTimeField(default=timezone.now, verbose_name='작성일')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='수정일')
@@ -14,7 +20,7 @@ class Notice(models.Model):
     class Meta:
         verbose_name = '공지사항'
         verbose_name_plural = '공지사항'
-        ordering = ['-created_at']  # 최신순 정렬
+        ordering = ['-created_at']
     
     def __str__(self):
         return self.title
@@ -23,8 +29,15 @@ class Notice(models.Model):
 class Event(models.Model):
     """이벤트 모델"""
     title = models.CharField(max_length=200, verbose_name='제목')
-    content = models.TextField(verbose_name='내용')
+    content = models.TextField(blank=True, null=True, verbose_name='내용')
     image = models.ImageField(upload_to='events/', blank=True, null=True, verbose_name='이미지')
+    image_url = models.URLField(
+        blank=True, 
+        null=True, 
+        verbose_name='이미지 링크 URL',
+        help_text='이미지를 클릭했을 때 이동할 URL을 입력하세요'
+    )
+    # 기본값 제거하고 폼에서 처리
     start_date = models.DateTimeField(verbose_name='시작일')
     end_date = models.DateTimeField(verbose_name='종료일')
     is_published = models.BooleanField(default=True, verbose_name='공개여부')
@@ -51,6 +64,12 @@ class Tips(models.Model):
     title = models.CharField(max_length=200, verbose_name='제목')
     content = models.TextField(verbose_name='내용')
     image = models.ImageField(upload_to='tips/', blank=True, null=True, verbose_name='이미지')
+    image_url = models.URLField(
+        blank=True, 
+        null=True, 
+        verbose_name='이미지 링크 URL',
+        help_text='이미지를 클릭했을 때 이동할 URL을 입력하세요'
+    )
     is_published = models.BooleanField(default=True, verbose_name='공개여부')
     created_at = models.DateTimeField(default=timezone.now, verbose_name='작성일')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='수정일')

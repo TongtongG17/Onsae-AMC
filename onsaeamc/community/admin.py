@@ -1,5 +1,43 @@
+# 첫 번째 admin.py (Notice, Event, Tips)
 from django.contrib import admin
+from django import forms
+from django.utils import timezone
+from django.contrib import messages
 from .models import Notice, Event, Tips
+
+
+class EventForm(forms.ModelForm):
+    class Meta:
+        model = Event
+        fields = '__all__'
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        
+        # 내용 필드를 필수가 아니게 설정
+        self.fields['content'].required = False
+        
+        # 새로운 객체일 때만 기본값 설정
+        if not kwargs.get('instance'):
+            now = timezone.now()
+            
+            # 시작일 기본값: 오전 9시
+            start_default = now.replace(hour=9, minute=0, second=0, microsecond=0)
+            self.fields['start_date'].initial = start_default
+            
+            # 종료일 기본값: 오후 8시  
+            end_default = now.replace(hour=20, minute=0, second=0, microsecond=0)
+            self.fields['end_date'].initial = end_default
+
+
+# 일괄 삭제 액션 함수
+def delete_selected_items(modeladmin, request, queryset):
+    """선택된 항목들을 일괄 삭제"""
+    count = queryset.count()
+    queryset.delete()
+    messages.success(request, f'{count}개의 항목이 성공적으로 삭제되었습니다.')
+
+delete_selected_items.short_description = "✓ 선택된 항목 삭제하기"
 
 
 @admin.register(Notice)
@@ -12,7 +50,11 @@ class NoticeAdmin(admin.ModelAdmin):
     
     fieldsets = (
         ('기본 정보', {
-            'fields': ('title', 'content', 'image')
+            'fields': ('title', 'content')
+        }),
+        ('이미지 설정', {
+            'fields': ('image', 'image_url'),
+            'description': '이미지 업로드 후, 이미지 클릭 시 이동할 URL을 입력하세요.'
         }),
         ('설정', {
             'fields': ('is_published',)
@@ -26,6 +68,7 @@ class NoticeAdmin(admin.ModelAdmin):
 
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
+    form = EventForm
     list_display = ['title', 'start_date', 'end_date', 'is_published', 'is_active_status', 'created_at']
     list_filter = ['is_published', 'start_date', 'end_date', 'created_at']
     search_fields = ['title', 'content']
@@ -39,10 +82,15 @@ class EventAdmin(admin.ModelAdmin):
     
     fieldsets = (
         ('기본 정보', {
-            'fields': ('title', 'content', 'image')
+            'fields': ('title', 'content'),
+            'description': '내용은 선택사항입니다. 이미지만 업로드해도 됩니다.'
+        }),
+        ('이미지 설정', {
+            'fields': ('image', 'image_url'),
+            'description': '이미지 업로드 후, 이미지 클릭 시 이동할 URL을 입력하세요.'
         }),
         ('이벤트 기간', {
-            'fields': ('start_date', 'end_date')
+            'fields': ('start_date', 'end_date'),
         }),
         ('설정', {
             'fields': ('is_published',)
@@ -64,7 +112,11 @@ class TipsAdmin(admin.ModelAdmin):
     
     fieldsets = (
         ('기본 정보', {
-            'fields': ('title', 'content', 'image')
+            'fields': ('title', 'content')
+        }),
+        ('이미지 설정', {
+            'fields': ('image', 'image_url'),
+            'description': '이미지 업로드 후, 이미지 클릭 시 이동할 URL을 입력하세요.'
         }),
         ('설정', {
             'fields': ('is_published',)
@@ -74,9 +126,3 @@ class TipsAdmin(admin.ModelAdmin):
             'classes': ('collapse',)
         }),
     )
-
-
-# 어드민 사이트 커스터마이징
-admin.site.site_header = "온새 동물병원 관리자"
-admin.site.site_title = "온새 동물병원"
-admin.site.index_title = "콘텐츠 관리"

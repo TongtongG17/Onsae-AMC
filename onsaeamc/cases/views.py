@@ -68,4 +68,4 @@ def detail(request, case_id):
         'next_post': next_case,
         'page_type': 'case'  # detail.html에서 구분용
     }
-    return render(request, 'community/detail.html', context)
+    return render(request, 'cases/detail.html', context)

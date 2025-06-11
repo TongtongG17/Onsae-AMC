@@ -7,6 +7,62 @@
 <link rel="stylesheet" href="{% static 'css/intro.css' %}">
 <link rel="stylesheet" href="{% static 'css/notice.css' %}">
 <link rel="stylesheet" href="{% static 'css/notice-detail.css' %}">
+<style>
+/* 이미지 링크 스타일 */
+.post-image a {
+  display: block;
+  transition: opacity 0.3s ease;
+}
+
+.post-image a:hover {
+  opacity: 0.8;
+}
+
+.post-image img {
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.post-image a:hover img {
+  transform: scale(1.02);
+}
+
+/* 링크가 있는 이미지임을 알려주는 아이콘 */
+.post-image a::after {
+  content: "🔗";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  padding: 5px 8px;
+  border-radius: 15px;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.post-image {
+  position: relative;
+}
+
+.post-image a:hover::after {
+  opacity: 1;
+}
+
+/* 치료케이스 전용 스타일 */
+.case-category {
+  display: inline-block;
+  background: #4CAF50;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+</style>
 {% endblock %}
 
 {% block content %}
@@ -33,12 +89,9 @@
     
     <!-- 게시글 헤더 -->
     <div class="post-header">
-      {% if page_type == 'notice' and post.is_important %}
-      <div class="post-badge important">중요</div>
-      {% elif page_type == 'event' and post.is_active %}
-      <div class="post-badge active">진행중</div>
-      {% elif page_type == 'event' %}
-      <div class="post-badge ended">종료</div>
+      <!-- 치료케이스 카테고리 표시 -->
+      {% if post.category %}
+      <div class="case-category">{{ post.get_category_display }}</div>
       {% endif %}
       
       <h1 class="post-title">{{ post.title }}</h1>
@@ -54,12 +107,6 @@
           <span class="meta-value">{{ post.updated_at|date:"Y.m.d" }}</span>
         </div>
         {% endif %}
-        {% if page_type == 'event' %}
-        <div class="meta-item">
-          <span class="meta-label">기간</span>
-          <span class="meta-value">{{ post.start_date|date:"Y.m.d" }} ~ {{ post.end_date|date:"Y.m.d" }}</span>
-        </div>
-        {% endif %}
       </div>
     </div>
     
@@ -67,7 +114,13 @@
     <div class="post-content">
       {% if post.image %}
       <div class="post-image">
-        <img src="{{ post.image.url }}" alt="{{ post.title }}">
+        {% if post.image_url %}
+          <a href="{{ post.image_url }}" target="_blank" rel="noopener noreferrer" title="클릭하여 링크로 이동">
+            <img src="{{ post.image.url }}" alt="{{ post.title }}">
+          </a>
+        {% else %}
+          <img src="{{ post.image.url }}" alt="{{ post.title }}">
+        {% endif %}
       </div>
       {% endif %}
       
@@ -81,7 +134,7 @@
       {% if prev_post %}
       <div class="post-nav-item prev">
         <span class="post-nav-label">이전글</span>
-        <a href="{% url 'community:'|add:page_type|add:'_detail' prev_post.id %}" class="post-nav-title">
+        <a href="{% url 'cases:detail' prev_post.id %}" class="post-nav-title">
           {{ prev_post.title }}
         </a>
       </div>
@@ -90,7 +143,7 @@
       {% if next_post %}
       <div class="post-nav-item next">
         <span class="post-nav-label">다음글</span>
-        <a href="{% url 'community:'|add:page_type|add:'_detail' next_post.id %}" class="post-nav-title">
+        <a href="{% url 'cases:detail' next_post.id %}" class="post-nav-title">
           {{ next_post.title }}
         </a>
       </div>
@@ -99,7 +152,7 @@
     
     <!-- 목록 버튼 -->
     <div class="post-actions">
-      <a href="{% url 'community:'|add:page_type|add:'_list' %}" class="btn-list">목록으로 돌아가기</a>
+      <a href="{% url 'cases:list' %}" class="btn-list">목록으로 돌아가기</a>
     </div>
   </div>
 </div>
@@ -107,15 +160,30 @@
 
 {% block extra_scripts %}
 <script>
-  // 이미지 확대 기능
+  // 이미지 링크 클릭 시 추가 기능
   document.addEventListener('DOMContentLoaded', function() {
-    const postImages = document.querySelectorAll('.post-image img');
+    const imageLinks = document.querySelectorAll('.post-image a');
     
-    postImages.forEach(img => {
-      img.addEventListener('click', function() {
-        // 이미지 확대 기능 (나중에 구현)
-        console.log('이미지 클릭:', this.src);
+    imageLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        // 링크 클릭 로그
+        console.log('치료케이스 이미지 링크 클릭:', this.href);
+        
+        // 필요시 추가 기능 구현 가능
+        // 예: 클릭 통계, 확인 메시지 등
       });
+    });
+    
+    // 일반 이미지 클릭 (링크가 없는 경우)
+    const normalImages = document.querySelectorAll('.post-image img');
+    
+    normalImages.forEach(img => {
+      if (!img.parentElement.matches('a')) {
+        img.addEventListener('click', function() {
+          console.log('일반 이미지 클릭:', this.src);
+          // 이미지 확대 기능 등 구현 가능
+        });
+      }
     });
   });
 </script>

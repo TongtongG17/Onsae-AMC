@@ -7,6 +7,51 @@
 <link rel="stylesheet" href="{% static 'css/intro.css' %}">
 <link rel="stylesheet" href="{% static 'css/notice.css' %}">
 <link rel="stylesheet" href="{% static 'css/notice-detail.css' %}">
+<style>
+/* 이미지 링크 스타일 */
+.post-image a {
+  display: block;
+  transition: opacity 0.3s ease;
+}
+
+.post-image a:hover {
+  opacity: 0.8;
+}
+
+.post-image img {
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.post-image a:hover img {
+  transform: scale(1.02);
+}
+
+/* 링크가 있는 이미지임을 알려주는 아이콘 */
+.post-image a::after {
+  content: "🔗";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  padding: 5px 8px;
+  border-radius: 15px;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.post-image {
+  position: relative;
+}
+
+.post-image a:hover::after {
+  opacity: 1;
+}
+</style>
 {% endblock %}
 
 {% block content %}
@@ -72,7 +117,13 @@
     <div class="post-content">
       {% if post.image %}
       <div class="post-image">
-        <img src="{{ post.image.url }}" alt="{{ post.title }}">
+        {% if post.image_url %}
+          <a href="{{ post.image_url }}" target="_blank" rel="noopener noreferrer" title="클릭하여 링크로 이동">
+            <img src="{{ post.image.url }}" alt="{{ post.title }}">
+          </a>
+        {% else %}
+          <img src="{{ post.image.url }}" alt="{{ post.title }}">
+        {% endif %}
       </div>
       {% endif %}
       
@@ -112,15 +163,30 @@
 
 {% block extra_scripts %}
 <script>
-  // 이미지 확대 기능
+  // 이미지 링크 클릭 시 추가 기능
   document.addEventListener('DOMContentLoaded', function() {
-    const postImages = document.querySelectorAll('.post-image img');
+    const imageLinks = document.querySelectorAll('.post-image a');
     
-    postImages.forEach(img => {
-      img.addEventListener('click', function() {
-        // 이미지 확대 기능 (나중에 구현)
-        console.log('이미지 클릭:', this.src);
+    imageLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        // 링크 클릭 로그
+        console.log('이미지 링크 클릭:', this.href);
+        
+        // 필요시 추가 기능 구현 가능
+        // 예: 클릭 통계, 확인 메시지 등
       });
+    });
+    
+    // 일반 이미지 클릭 (링크가 없는 경우)
+    const normalImages = document.querySelectorAll('.post-image img:not([data-has-link])');
+    
+    normalImages.forEach(img => {
+      if (!img.parentElement.matches('a')) {
+        img.addEventListener('click', function() {
+          console.log('일반 이미지 클릭:', this.src);
+          // 이미지 확대 기능 등 구현 가능
+        });
+      }
     });
   });
 </script>

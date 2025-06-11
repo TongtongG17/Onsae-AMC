@@ -1457,8 +1457,8 @@ footer {
   }
   
   .hero-text {
-    text-align: left;
-    align-items: flex-start;
+    text-align: center;
+    align-items: center;
     max-width: 1200px;
     width: 100%;
     padding: 0 60px;
@@ -1469,13 +1469,13 @@ footer {
   .intro-heading {
     font-size: 42px;
     max-width: 1200px;
-    text-align: left;
+    text-align: center;
   }
   
   .intro-btn {
     padding: 20px 60px;
     font-size: 20px;
-    align-self: flex-start;
+    align-self: center;
   }
   
   .hero-swiper .swiper-button-next,

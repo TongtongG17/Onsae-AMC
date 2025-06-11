@@ -24,6 +24,12 @@ class MedicalCase(models.Model):
         null=True, 
         verbose_name='대표 이미지'
     )
+    image_url = models.URLField(
+        blank=True, 
+        null=True, 
+        verbose_name='이미지 링크 URL',
+        help_text='이미지를 클릭했을 때 이동할 URL을 입력하세요'
+    )
     is_published = models.BooleanField(default=True, verbose_name='공개여부')
     created_at = models.DateTimeField(default=timezone.now, verbose_name='작성일')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='수정일')
@@ -31,7 +37,7 @@ class MedicalCase(models.Model):
     class Meta:
         verbose_name = '치료케이스'
         verbose_name_plural = '치료케이스'
-        ordering = ['-created_at']  # 최신순 정렬
+        ordering = ['-created_at']
     
     def __str__(self):
         return f"[{self.get_category_display()}] {self.title}"
