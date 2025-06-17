@@ -9,6 +9,12 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   margin: 15px 0;
   display: block;
+  
+  /* 이미지 품질 유지 */
+  object-fit: contain;
+  
+  /* 작은 화면에서 최소 가독성 확보 */
+  min-height: 200px;
 }
 
 /* CKEditor 텍스트 스타일 개선 */
@@ -80,8 +86,35 @@
 
 /* 태블릿 버전 */
 @media (min-width: 768px) {
-  .post-text img {
-    margin: 20px 0;
+  .post-text img,
+  .post-image img,
+  .post-image-legacy img {
+    /* 모바일에서는 최소 높이 줄이고 */
+    min-height: 150px;
+    
+    /* 이미지가 너무 작지 않도록 */
+    min-width: 200px;
+    
+    /* 중앙 정렬 */
+    margin: 15px auto;
+    
+    /* 패딩으로 여백 확보 */
+    padding: 5px;
+    
+    /* 배경색으로 이미지 영역 명확히 */
+    background-color: #f8f9fa;
+  }
+  
+  /* 이미지 컨테이너도 중앙 정렬 */
+  .post-image, .post-image-legacy {
+    text-align: center;
+    padding: 10px;
+  }
+  
+  /* CKEditor 이미지가 포함된 문단도 중앙 정렬 */
+  .post-text p img {
+    display: block;
+    margin: 15px auto;
   }
   
   .post-text h1, .post-text h2, .post-text h3, 
@@ -144,6 +177,55 @@
   
   .post-text th, .post-text td {
     padding: 18px 25px;
+  }
+}
+
+@media (max-width: 425px) {
+  .post-text img,
+  .post-image img,
+  .post-image-legacy img {
+    min-height: 120px;
+    min-width: 150px;
+    margin: 10px auto;
+    padding: 8px;
+    
+    /* 작은 화면에서 이미지 경계 강조 */
+    border: 1px solid #e9ecef;
+  }
+  
+  /* 이미지 주변 텍스트 여백 조정 */
+  .post-text {
+    padding: 20px 15px;
+  }
+}
+
+/* 큰 이미지일 때 스크롤 방지 */
+.post-text,
+.post-image,
+.post-image-legacy {
+  overflow-x: auto;
+}
+
+/* 이미지 로딩 중 플레이스홀더 */
+.post-text img[src=""],
+.post-image img[src=""],
+.post-image-legacy img[src=""] {
+  background-color: #f8f9fa;
+  background-image: linear-gradient(45deg, #e9ecef 25%, transparent 25%),
+                    linear-gradient(-45deg, #e9ecef 25%, transparent 25%),
+                    linear-gradient(45deg, transparent 75%, #e9ecef 75%),
+                    linear-gradient(-45deg, transparent 75%, #e9ecef 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  min-height: 200px;
+}
+
+@media (hover: hover) {
+  .post-text img:hover,
+  .post-image img:hover,
+  .post-image-legacy img:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
   }
 }
 /* 공통 스타일 (모바일 기준: 425px 이하) */
@@ -270,13 +352,13 @@
   text-align: center;
 }
 
-.post-image img {
-  width: 100%;
+.post-image img, .post-image-legacy img {
   max-width: 100%;
   height: auto;
-  display: block;
-  cursor: pointer;
-  transition: transform 0.3s ease;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  object-fit: contain;
+  min-height: 200px;
 }
 
 .post-image img:hover {
