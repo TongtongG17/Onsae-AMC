@@ -1,5 +1,3 @@
-
-
 """
 Django settings for onsaeamc project.
 
@@ -14,7 +12,6 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 import os
 from pathlib import Path
 from dotenv import load_dotenv
-from pathlib import Path
 
 # .env 파일 로드
 load_dotenv()
@@ -25,8 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # 카카오맵 API 키
 KAKAO_MAP_API_KEY = os.getenv('KAKAO_MAP_API_KEY')
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+# CSRF 설정
 CSRF_COOKIE_SECURE = False  # 개발 환경에서는 False로 설정
 CSRF_COOKIE_HTTPONLY = False  # API 접근을 위해 False로 설정
 
@@ -42,14 +38,9 @@ SECRET_KEY = "django-insecure-=vf=%=5pzzq372(bb=9_0c+&xi0)7q=!g#_c*d+w29spp=x)h1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True # 개발 중에는 True, 배포 시에는 False로 변경
 
-#ALLOWED_HOSTS = ['localhost', '127.0.0.1']  # 배포 시 실제 도메인 추가
-
 ALLOWED_HOSTS = ['203.245.29.204', 'onsaeamc.co.kr', 'www.onsaeamc.co.kr', 'localhost', '127.0.0.1']
-# ALLOWED_HOSTS = ['*']  
-# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 # Application definition
-
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -63,6 +54,10 @@ INSTALLED_APPS = [
     'medical',
     'cases',
     'community',
+    
+    # CKEditor
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -96,31 +91,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "onsaeamc.wsgi.application"
 
-
 # Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'onsae_hospital',
         'USER': 'dbuser',
         'PASSWORD': 'onsae0415!',
-        'HOST': '203.245.29.204',  # 서버 IP 주소
+        'HOST': '203.245.29.204',
         'PORT': '5432',
     }
 }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 # Password validation
-# https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
@@ -136,24 +119,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
-# https://docs.djangoproject.com/en/5.2/topics/i18n/
-
 LANGUAGE_CODE = 'ko-kr'
 TIME_ZONE = 'Asia/Seoul'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.2/howto/static-files/
-
-# STATIC_URL = '/static/'
-# STATIC_ROOT = BASE_DIR / 'staticfiles'
-# STATICFILES_DIRS = [BASE_DIR / 'static']
-
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
@@ -161,10 +134,35 @@ STATICFILES_DIRS = [
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+# Media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
-# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# CKEditor 설정
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_RESTRICT_BY_USER = True
+CKEDITOR_BROWSE_SHOW_DIRS = True
+
+# CKEditor 커스텀 설정
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline'],
+            ['TextColor', 'BGColor'],
+            ['FontSize'],
+            ['NumberedList', 'BulletedList'],
+            ['Link', 'Unlink'],
+            ['Image'],
+            ['RemoveFormat', 'Source']
+        ],
+        'fontSize_sizes': '18px/18px;24px/24px;',  # 18포인트, 24포인트만
+        'height': 400,
+        'width': '100%',
+        'filebrowserWindowWidth': 940,
+        'filebrowserWindowHeight': 725,
+    }
+}

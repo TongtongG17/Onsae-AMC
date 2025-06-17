@@ -1,11 +1,12 @@
 from django.db import models
 from django.utils import timezone
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Notice(models.Model):
     """공지사항 모델"""
     title = models.CharField(max_length=200, verbose_name='제목')
-    content = models.TextField(verbose_name='내용')
+    content = RichTextUploadingField(verbose_name='내용')  # 이 부분만 변경
     image = models.ImageField(upload_to='notices/', blank=True, null=True, verbose_name='이미지')
     image_url = models.URLField(
         blank=True, 
@@ -37,7 +38,6 @@ class Event(models.Model):
         verbose_name='이미지 링크 URL',
         help_text='이미지를 클릭했을 때 이동할 URL을 입력하세요'
     )
-    # 기본값 제거하고 폼에서 처리
     start_date = models.DateTimeField(verbose_name='시작일')
     end_date = models.DateTimeField(verbose_name='종료일')
     is_published = models.BooleanField(default=True, verbose_name='공개여부')

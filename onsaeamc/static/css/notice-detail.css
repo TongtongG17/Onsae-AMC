@@ -1,5 +1,151 @@
 /* notice-detail.css */
+/* CKEditor 콘텐츠 스타일링 - notice-detail.css 맨 끝에 추가 */
 
+/* CKEditor로 작성된 콘텐츠 내 이미지 스타일 */
+.post-text img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin: 15px 0;
+  display: block;
+}
+
+/* CKEditor 텍스트 스타일 개선 */
+.post-text h1, .post-text h2, .post-text h3, 
+.post-text h4, .post-text h5, .post-text h6 {
+  margin: 25px 0 15px 0;
+  color: #333;
+  font-weight: 600;
+}
+
+.post-text h1 { font-size: 24px; }
+.post-text h2 { font-size: 22px; }
+.post-text h3 { font-size: 20px; }
+.post-text h4 { font-size: 18px; }
+
+/* CKEditor 목록 스타일 */
+.post-text ul, .post-text ol {
+  margin: 15px 0;
+  padding-left: 30px;
+}
+
+.post-text li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+/* CKEditor 링크 스타일 */
+.post-text a {
+  color: #2F6022;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.post-text a:hover {
+  color: #245018;
+}
+
+/* CKEditor 인용구 스타일 */
+.post-text blockquote {
+  margin: 20px 0;
+  padding: 15px 20px;
+  background-color: #f8f9fa;
+  border-left: 4px solid #2F6022;
+  border-radius: 4px;
+}
+
+/* CKEditor 표 스타일 */
+.post-text table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background-color: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.post-text th, .post-text td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.post-text th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #333;
+}
+
+/* 태블릿 버전 */
+@media (min-width: 768px) {
+  .post-text img {
+    margin: 20px 0;
+  }
+  
+  .post-text h1, .post-text h2, .post-text h3, 
+  .post-text h4, .post-text h5, .post-text h6 {
+    margin: 30px 0 20px 0;
+  }
+  
+  .post-text h1 { font-size: 28px; }
+  .post-text h2 { font-size: 26px; }
+  .post-text h3 { font-size: 24px; }
+  .post-text h4 { font-size: 22px; }
+  
+  .post-text ul, .post-text ol {
+    margin: 20px 0;
+    padding-left: 40px;
+  }
+  
+  .post-text li {
+    margin-bottom: 10px;
+  }
+  
+  .post-text blockquote {
+    margin: 25px 0;
+    padding: 20px 25px;
+  }
+  
+  .post-text th, .post-text td {
+    padding: 15px 20px;
+  }
+}
+
+/* PC 버전 */
+@media (min-width: 1024px) {
+  .post-text img {
+    margin: 25px 0;
+  }
+  
+  .post-text h1, .post-text h2, .post-text h3, 
+  .post-text h4, .post-text h5, .post-text h6 {
+    margin: 35px 0 25px 0;
+  }
+  
+  .post-text h1 { font-size: 32px; }
+  .post-text h2 { font-size: 30px; }
+  .post-text h3 { font-size: 28px; }
+  .post-text h4 { font-size: 26px; }
+  
+  .post-text ul, .post-text ol {
+    margin: 25px 0;
+  }
+  
+  .post-text li {
+    margin-bottom: 12px;
+  }
+  
+  .post-text blockquote {
+    margin: 30px 0;
+    padding: 25px 30px;
+  }
+  
+  .post-text th, .post-text td {
+    padding: 18px 25px;
+  }
+}
 /* 공통 스타일 (모바일 기준: 425px 이하) */
 .detail-container {
   width: 100%;
@@ -399,5 +545,176 @@
   .btn-list {
     padding: 18px 50px;
     font-size: 16px;
+  }
+}
+
+/* CKEditor 콘텐츠 스타일링 - notice-detail.css 맨 끝에 추가 */
+
+/* 기존 공지사항 이미지 스타일 */
+.post-image-legacy {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.post-image-legacy img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.post-image-legacy a {
+  display: inline-block;
+  transition: opacity 0.3s ease;
+}
+
+.post-image-legacy a:hover {
+  opacity: 0.8;
+}
+
+/* CKEditor로 작성된 콘텐츠 내 이미지 스타일 */
+.post-text img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin: 15px 0;
+  display: block;
+}
+
+/* CKEditor 텍스트 스타일 개선 */
+.post-text h1, .post-text h2, .post-text h3, 
+.post-text h4, .post-text h5, .post-text h6 {
+  margin: 25px 0 15px 0;
+  color: #333;
+  font-weight: 600;
+}
+
+.post-text h1 { font-size: 24px; }
+.post-text h2 { font-size: 22px; }
+.post-text h3 { font-size: 20px; }
+.post-text h4 { font-size: 18px; }
+
+/* CKEditor 목록 스타일 */
+.post-text ul, .post-text ol {
+  margin: 15px 0;
+  padding-left: 30px;
+}
+
+.post-text li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+/* CKEditor 링크 스타일 */
+.post-text a {
+  color: #2F6022;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.post-text a:hover {
+  color: #245018;
+}
+
+/* CKEditor 인용구 스타일 */
+.post-text blockquote {
+  margin: 20px 0;
+  padding: 15px 20px;
+  background-color: #f8f9fa;
+  border-left: 4px solid #2F6022;
+  border-radius: 4px;
+}
+
+/* CKEditor 표 스타일 */
+.post-text table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background-color: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.post-text th, .post-text td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.post-text th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #333;
+}
+
+/* 태블릿 버전 */
+@media (min-width: 768px) {
+  .post-text img {
+    margin: 20px 0;
+  }
+  
+  .post-text h1, .post-text h2, .post-text h3, 
+  .post-text h4, .post-text h5, .post-text h6 {
+    margin: 30px 0 20px 0;
+  }
+  
+  .post-text h1 { font-size: 28px; }
+  .post-text h2 { font-size: 26px; }
+  .post-text h3 { font-size: 24px; }
+  .post-text h4 { font-size: 22px; }
+  
+  .post-text ul, .post-text ol {
+    margin: 20px 0;
+    padding-left: 40px;
+  }
+  
+  .post-text li {
+    margin-bottom: 10px;
+  }
+  
+  .post-text blockquote {
+    margin: 25px 0;
+    padding: 20px 25px;
+  }
+  
+  .post-text th, .post-text td {
+    padding: 15px 20px;
+  }
+}
+
+/* PC 버전 */
+@media (min-width: 1024px) {
+  .post-text img {
+    margin: 25px 0;
+  }
+  
+  .post-text h1, .post-text h2, .post-text h3, 
+  .post-text h4, .post-text h5, .post-text h6 {
+    margin: 35px 0 25px 0;
+  }
+  
+  .post-text h1 { font-size: 32px; }
+  .post-text h2 { font-size: 30px; }
+  .post-text h3 { font-size: 28px; }
+  .post-text h4 { font-size: 26px; }
+  
+  .post-text ul, .post-text ol {
+    margin: 25px 0;
+  }
+  
+  .post-text li {
+    margin-bottom: 12px;
+  }
+  
+  .post-text blockquote {
+    margin: 30px 0;
+    padding: 25px 30px;
+  }
+  
+  .post-text th, .post-text td {
+    padding: 18px 25px;
   }
 }

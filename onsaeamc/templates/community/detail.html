@@ -51,6 +51,20 @@
 .post-image a:hover::after {
   opacity: 1;
 }
+
+/* CKEditor 콘텐츠 내 이미지 스타일링 */
+.post-text img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin: 10px 0;
+}
+
+.post-text p {
+  margin-bottom: 1em;
+  line-height: 1.6;
+}
 </style>
 {% endblock %}
 
@@ -115,20 +129,38 @@
     
     <!-- 게시글 내용 -->
     <div class="post-content">
-      {% if post.image %}
-      <div class="post-image">
-        {% if post.image_url %}
-          <a href="{{ post.image_url }}" target="_blank" rel="noopener noreferrer" title="클릭하여 링크로 이동">
-            <img src="{{ post.image.url }}" alt="{{ post.title }}">
-          </a>
-        {% else %}
-          <img src="{{ post.image.url }}" alt="{{ post.title }}">
-        {% endif %}
-      </div>
-      {% endif %}
-      
       <div class="post-text">
-        {{ post.content|linebreaks }}
+        {% if page_type == 'notice' %}
+          <!-- CKEditor 콘텐츠에 이미지가 없고 기존 image 필드가 있으면 먼저 표시 -->
+          {% if post.image and '<img' not in post.content %}
+          <div class="post-image-legacy">
+            {% if post.image_url %}
+              <a href="{{ post.image_url }}" target="_blank" rel="noopener noreferrer" title="클릭하여 링크로 이동">
+                <img src="{{ post.image.url }}" alt="{{ post.title }}">
+              </a>
+            {% else %}
+              <img src="{{ post.image.url }}" alt="{{ post.title }}">
+            {% endif %}
+          </div>
+          {% endif %}
+          
+          {{ post.content|safe }}
+        {% else %}
+          <!-- 다른 페이지 타입은 기존 방식 유지 -->
+          {% if post.image %}
+          <div class="post-image">
+            {% if post.image_url %}
+              <a href="{{ post.image_url }}" target="_blank" rel="noopener noreferrer" title="클릭하여 링크로 이동">
+                <img src="{{ post.image.url }}" alt="{{ post.title }}">
+              </a>
+            {% else %}
+              <img src="{{ post.image.url }}" alt="{{ post.title }}">
+            {% endif %}
+          </div>
+          {% endif %}
+          
+          {{ post.content|linebreaks }}
+        {% endif %}
       </div>
     </div>
     

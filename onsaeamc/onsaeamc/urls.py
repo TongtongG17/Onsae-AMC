@@ -26,6 +26,7 @@ urlpatterns = [
     path('medical/', include('medical.urls')),
     path('cases/', include('cases.urls')),
     path('community/', include('community.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')), 
 ]
 
 if settings.DEBUG:
