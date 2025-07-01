@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load content_utils %}
 
 {% block title %}온새동물의료센터-치료케이스{% endblock %}
 
@@ -59,6 +60,8 @@
         <div class="case-image">
           {% if case.image %}
             <img src="{{ case.image.url }}" alt="{{ case.title }}">
+          {% elif case.content|extract_first_image %}
+            <img src="{{ case.content|extract_first_image }}" alt="{{ case.title }}">
           {% else %}
             <img src="{% static 'images/예시2.png' %}" alt="{{ case.title }}">
           {% endif %}
@@ -68,7 +71,7 @@
           <h3 class="case-title">
             <a href="{% url 'cases:detail' case.id %}">{{ case.title }}</a>
           </h3>
-          <p class="case-desc">{{ case.content|truncatewords:15|striptags }}</p>
+          <p class="case-desc">{{ case.content|clean_preview|truncatewords:15 }}</p>
           <div class="case-meta">
             <span class="case-date">{{ case.created_at|date:"Y.m.d" }}</span>
           </div>

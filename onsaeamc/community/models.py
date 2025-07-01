@@ -6,7 +6,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 class Notice(models.Model):
     """공지사항 모델"""
     title = models.CharField(max_length=200, verbose_name='제목')
-    content = RichTextUploadingField(verbose_name='내용')  # 이 부분만 변경
+    content = RichTextUploadingField(verbose_name='내용')
     image = models.ImageField(upload_to='notices/', blank=True, null=True, verbose_name='이미지')
     image_url = models.URLField(
         blank=True, 
@@ -30,7 +30,7 @@ class Notice(models.Model):
 class Event(models.Model):
     """이벤트 모델"""
     title = models.CharField(max_length=200, verbose_name='제목')
-    content = models.TextField(blank=True, null=True, verbose_name='내용')
+    content = RichTextUploadingField(blank=True, null=True, verbose_name='내용')  # 변경
     image = models.ImageField(upload_to='events/', blank=True, null=True, verbose_name='이미지')
     image_url = models.URLField(
         blank=True, 
@@ -62,7 +62,7 @@ class Event(models.Model):
 class Tips(models.Model):
     """우리집 털뭉치들 모델"""
     title = models.CharField(max_length=200, verbose_name='제목')
-    content = models.TextField(verbose_name='내용')
+    content = RichTextUploadingField(verbose_name='내용')  # 변경
     image = models.ImageField(upload_to='tips/', blank=True, null=True, verbose_name='이미지')
     image_url = models.URLField(
         blank=True, 

@@ -112,20 +112,22 @@
     
     <!-- 게시글 내용 -->
     <div class="post-content">
-      {% if post.image %}
-      <div class="post-image">
-        {% if post.image_url %}
-          <a href="{{ post.image_url }}" target="_blank" rel="noopener noreferrer" title="클릭하여 링크로 이동">
-            <img src="{{ post.image.url }}" alt="{{ post.title }}">
-          </a>
-        {% else %}
-          <img src="{{ post.image.url }}" alt="{{ post.title }}">
-        {% endif %}
-      </div>
-      {% endif %}
-      
       <div class="post-text">
-        {{ post.content|linebreaks }}
+        <!-- CKEditor 콘텐츠에 이미지가 없고 기존 image 필드가 있으면 먼저 표시 -->
+        {% if post.image and '<img' not in post.content %}
+        <div class="post-image-legacy">
+          {% if post.image_url %}
+            <a href="{{ post.image_url }}" target="_blank" rel="noopener noreferrer" title="클릭하여 링크로 이동">
+              <img src="{{ post.image.url }}" alt="{{ post.title }}">
+            </a>
+          {% else %}
+            <img src="{{ post.image.url }}" alt="{{ post.title }}">
+          {% endif %}
+        </div>
+        {% endif %}
+        
+        <!-- CKEditor 콘텐츠 -->
+        {{ post.content|safe }}
       </div>
     </div>
     
@@ -160,30 +162,36 @@
 
 {% block extra_scripts %}
 <script>
-  // 이미지 링크 클릭 시 추가 기능
+  // 이미지 클릭 시 새창으로 원본 보기
   document.addEventListener('DOMContentLoaded', function() {
-    const imageLinks = document.querySelectorAll('.post-image a');
+    // 모든 이미지에 클릭 이벤트 추가
+    const images = document.querySelectorAll('.post-text img, .post-image img, .post-image-legacy img');
     
-    imageLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        // 링크 클릭 로그
-        console.log('치료케이스 이미지 링크 클릭:', this.href);
+    images.forEach(img => {
+      // 이미지에 커서 포인터 스타일 추가
+      img.style.cursor = 'pointer';
+      
+      // 클릭 이벤트 추가
+      img.addEventListener('click', function(e) {
+        // 이미지가 링크 안에 있다면 링크 동작 우선
+        if (this.parentElement.tagName === 'A') {
+          return; // 기존 링크 동작 유지
+        }
         
-        // 필요시 추가 기능 구현 가능
-        // 예: 클릭 통계, 확인 메시지 등
+        // 새창으로 원본 이미지 열기
+        window.open(this.src, '_blank', 'width=800,height=600,scrollbars=yes,resizable=yes');
       });
-    });
-    
-    // 일반 이미지 클릭 (링크가 없는 경우)
-    const normalImages = document.querySelectorAll('.post-image img');
-    
-    normalImages.forEach(img => {
-      if (!img.parentElement.matches('a')) {
-        img.addEventListener('click', function() {
-          console.log('일반 이미지 클릭:', this.src);
-          // 이미지 확대 기능 등 구현 가능
-        });
-      }
+      
+      // 호버 효과 추가
+      img.addEventListener('mouseenter', function() {
+        this.style.opacity = '0.8';
+        this.style.transform = 'scale(1.02)';
+      });
+      
+      img.addEventListener('mouseleave', function() {
+        this.style.opacity = '1';
+        this.style.transform = 'scale(1)';
+      });
     });
   });
 </script>

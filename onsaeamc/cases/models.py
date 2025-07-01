@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class MedicalCase(models.Model):
@@ -11,7 +12,7 @@ class MedicalCase(models.Model):
     ]
     
     title = models.CharField(max_length=200, verbose_name='제목')
-    content = models.TextField(verbose_name='내용')
+    content = RichTextUploadingField(verbose_name='내용')  # 변경
     category = models.CharField(
         max_length=20, 
         choices=CATEGORY_CHOICES, 

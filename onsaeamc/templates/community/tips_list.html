@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load content_utils %}
 
 {% block title %}온새동물의료센터-우리집 털뭉치들{% endblock %}
 
@@ -50,6 +51,8 @@
         <div class="case-image">
           {% if tip.image %}
             <img src="{{ tip.image.url }}" alt="{{ tip.title }}">
+          {% elif tip.content|extract_first_image %}
+            <img src="{{ tip.content|extract_first_image }}" alt="{{ tip.title }}">
           {% else %}
             <img src="{% static 'images/default-tip.jpg' %}" alt="{{ tip.title }}">
           {% endif %}
@@ -59,7 +62,7 @@
           <h3 class="case-title">
             <a href="{% url 'community:tips_detail' tip.id %}">{{ tip.title }}</a>
           </h3>
-          <p class="case-desc">{{ tip.content|truncatewords:15|striptags }}</p>
+          <p class="case-desc">{{ tip.content|clean_preview|truncatewords:15 }}</p>
           <div class="case-meta">
             <span class="case-date">{{ tip.created_at|date:"Y.m.d" }}</span>
           </div>

@@ -130,7 +130,7 @@
     <!-- 게시글 내용 -->
     <div class="post-content">
       <div class="post-text">
-        {% if page_type == 'notice' %}
+        {% if page_type == 'notice' or page_type == 'event' or page_type == 'tips' or page_type == 'case' %}
           <!-- CKEditor 콘텐츠에 이미지가 없고 기존 image 필드가 있으면 먼저 표시 -->
           {% if post.image and '<img' not in post.content %}
           <div class="post-image-legacy">
@@ -221,39 +221,5 @@
       }
     });
   });
-</script>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // 모든 이미지에 클릭 이벤트 추가
-  const images = document.querySelectorAll('.post-text img, .post-image img, .post-image-legacy img');
-  
-  images.forEach(img => {
-    // 이미지에 커서 포인터 스타일 추가
-    img.style.cursor = 'pointer';
-    
-    // 클릭 이벤트 추가
-    img.addEventListener('click', function(e) {
-      // 이미지가 링크 안에 있다면 링크 동작 우선
-      if (this.parentElement.tagName === 'A') {
-        return; // 기존 링크 동작 유지
-      }
-      
-      // 새창으로 원본 이미지 열기
-      window.open(this.src, '_blank', 'width=800,height=600,scrollbars=yes,resizable=yes');
-    });
-    
-    // 호버 효과 추가
-    img.addEventListener('mouseenter', function() {
-      this.style.opacity = '0.8';
-      this.style.transform = 'scale(1.02)';
-    });
-    
-    img.addEventListener('mouseleave', function() {
-      this.style.opacity = '1';
-      this.style.transform = 'scale(1)';
-    });
-  });
-});
 </script>
 {% endblock %}
